@@ -1,0 +1,2 @@
+# AI-Powered-Real-Time-Detection-and-Analysis-of-Marine-Plastic-Pollution
+This project proposes an AI-powered system for real-time detection and analysis of marine plastic pollution. Leveraging advanced computer vision and machine learning algorithms, the system processes data from various sources, including drones, satellites, and underwater vehicles, to identify, classify, and quantify plastic debris.
