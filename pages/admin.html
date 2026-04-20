@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abyssal Lens | Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: {
+                "colors": {"primary":"#99f7ff","on-primary-fixed":"#004145","surface-container-low":"#0c1326","tertiary":"#47c4ff","surface-container":"#11192e","surface":"#070d1f","on-surface-variant":"#a5aac2","surface-container-highest":"#1c253e","surface-bright":"#222b47","on-background":"#dfe4fe","primary-container":"#00f1fe","background":"#070d1f","on-primary":"#005f64","surface-container-lowest":"#000000","on-surface":"#dfe4fe","outline":"#6f758b","error":"#ff716c","outline-variant":"#41475b","surface-container-high":"#171f36","primary-dim":"#00e2ee"},
+                "borderRadius": {"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+                "fontFamily": {"headline":["Space Grotesk"],"body":["Inter"]}
+            }}
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #070d1f; color: #dfe4fe; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#11192e]/60 backdrop-blur-xl w-64 border-r border-[#41475b]/15 font-['Space_Grotesk'] text-sm tracking-tight">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center"><span class="material-symbols-outlined text-surface-container-lowest font-bold">waves</span></div>
+<div><h1 class="text-xl font-bold tracking-tighter text-[#99f7ff] leading-none">Abyssal Lens</h1><p class="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mt-1">Marine Intel Platform</p></div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="live-monitoring.html"><span class="material-symbols-outlined">videocam</span><span>Live Monitor</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="image-analysis.html"><span class="material-symbols-outlined">analytics</span><span>Analysis</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="geospatial.html"><span class="material-symbols-outlined">explore</span><span>Map</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="reports.html"><span class="material-symbols-outlined">description</span><span>Reports</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="alerts.html"><span class="material-symbols-outlined">notifications_active</span><span>Alerts</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#99f7ff] font-bold bg-[#1c253e] rounded-lg" href="admin.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">admin_panel_settings</span><span>Admin</span></a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<img alt="Dr. Aris Thorne" class="w-10 h-10 rounded-full border border-error/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-cm6jNnGiks47paoKTgSqxgQFZDFKr5gCrLR5HlyI7E25hwSTDKWVGIQBnXKbKx0yNGTPKl4IByQRIKyoOxGHWjtUEUA70wvXj-mPwBbLHcySeaFU9AHsjoeGEUHXKPBYoHOQoQUbBm1mKjGsHUEkiPHCrMJH9xPKO3cOTsEMbl3z0pzgUGaNi2VU40xInRGynR8GRvuBZTCu7fam1xEK0q8W19vFiEYhJBiyHeOKYp2KUEsaDXOGV6YoDtdV6rTAtdOLyLdfUhnB"/>
+<div><p class="text-xs font-bold text-on-surface">Dr. Aris Thorne</p><p class="text-[10px] text-error">SYSTEM ADMIN</p></div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 z-30 bg-[#070d1f]/60 backdrop-blur-md w-full h-16 border-b border-[#41475b]/15 font-['Space_Grotesk'] text-sm">
+<div class="flex items-center gap-3 flex-1">
+<span class="material-symbols-outlined text-error">admin_panel_settings</span>
+<h2 class="text-lg font-headline font-bold">System Administration</h2>
+<span class="ml-2 text-[10px] px-2 py-0.5 bg-error/10 text-error rounded-full font-bold uppercase border border-error/20">RESTRICTED</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<a href="alerts.html"><span class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">notifications</span></a>
+<button><span class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">help</span></button>
+</div>
+</header>
+<!-- Main -->
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<div class="p-8 max-w-[1600px] mx-auto">
+<div class="mb-8">
+<h2 class="text-3xl font-headline font-bold tracking-tight">System Administration</h2>
+<p class="text-on-surface-variant mt-1">Manage users, API keys, data streams, and audit logs</p>
+</div>
+<!-- Tab Row -->
+<div class="flex gap-1 mb-8 p-1 bg-surface-container rounded-xl border border-outline-variant/10 w-fit">
+<button class="px-5 py-2 bg-surface-container-highest text-primary rounded-lg text-xs font-bold transition-colors">Personnel</button>
+<button class="px-5 py-2 text-on-surface-variant rounded-lg text-xs hover:bg-surface-container-high transition-colors">API Keys</button>
+<button class="px-5 py-2 text-on-surface-variant rounded-lg text-xs hover:bg-surface-container-high transition-colors">Data Streams</button>
+<button class="px-5 py-2 text-on-surface-variant rounded-lg text-xs hover:bg-surface-container-high transition-colors">Audit Log</button>
+</div>
+<!-- System Stats -->
+<div class="grid grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-primary">group</span><span class="text-xs text-on-surface-variant">Total Users</span></div>
+<p class="text-2xl font-headline font-bold">28</p><p class="text-[10px] text-on-surface-variant mt-1">3 pending approval</p>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-tertiary">key</span><span class="text-xs text-on-surface-variant">Active API Keys</span></div>
+<p class="text-2xl font-headline font-bold">12</p><p class="text-[10px] text-on-surface-variant mt-1">2 expiring this month</p>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-primary">sensors</span><span class="text-xs text-on-surface-variant">Data Streams</span></div>
+<p class="text-2xl font-headline font-bold">124</p><p class="text-[10px] text-on-surface-variant mt-1">118 active · 6 offline</p>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-error/20">
+<div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-error">security</span><span class="text-xs text-on-surface-variant">Security Events</span></div>
+<p class="text-2xl font-headline font-bold text-error">03</p><p class="text-[10px] text-on-surface-variant mt-1">in last 24 hours</p>
+</div>
+</div>
+<!-- User Management Table -->
+<div class="bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden mb-6">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline font-bold text-lg">Personnel Management</h3>
+<button class="px-4 py-2 bg-primary text-on-primary font-bold text-xs rounded-full flex items-center gap-2 hover:shadow-[0_0_15px_rgba(153,247,255,0.3)] transition-all">
+<span class="material-symbols-outlined text-sm">person_add</span>Add User
+</button>
+</div>
+<table class="w-full">
+<thead class="bg-surface-container-highest/50">
+<tr>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant">User</th>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant hidden md:table-cell">Role</th>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant hidden lg:table-cell">Last Active</th>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="px-6 py-3"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Dr. Aris Thorne" class="w-8 h-8 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-cm6jNnGiks47paoKTgSqxgQFZDFKr5gCrLR5HlyI7E25hwSTDKWVGIQBnXKbKx0yNGTPKl4IByQRIKyoOxGHWjtUEUA70wvXj-mPwBbLHcySeaFU9AHsjoeGEUHXKPBYoHOQoQUbBm1mKjGsHUEkiPHCrMJH9xPKO3cOTsEMbl3z0pzgUGaNi2VU40xInRGynR8GRvuBZTCu7fam1xEK0q8W19vFiEYhJBiyHeOKYp2KUEsaDXOGV6YoDtdV6rTAtdOLyLdfUhnB"/>
+<div><p class="text-sm font-medium">Dr. Aris Thorne</p><p class="text-xs text-on-surface-variant">aris.thorne@marine-intel.org</p></div>
+</div>
+</td>
+<td class="px-6 py-4 hidden md:table-cell"><span class="text-xs px-2 py-1 bg-error/10 text-error rounded-full font-bold border border-error/20">Admin</span></td>
+<td class="px-6 py-4 hidden lg:table-cell text-xs text-on-surface-variant font-mono">Just now</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-bold">Online</span></td>
+<td class="px-6 py-4 text-right"><button class="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-colors text-sm">more_vert</button></td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/20 flex items-center justify-center text-[10px] font-bold text-primary">SR</div>
+<div><p class="text-sm font-medium">Dr. Sofia Reyes</p><p class="text-xs text-on-surface-variant">sofia.reyes@marine-intel.org</p></div>
+</div>
+</td>
+<td class="px-6 py-4 hidden md:table-cell"><span class="text-xs px-2 py-1 bg-tertiary/10 text-tertiary rounded-full font-bold">Analyst</span></td>
+<td class="px-6 py-4 hidden lg:table-cell text-xs text-on-surface-variant font-mono">2h ago</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-outline-variant/20 text-on-surface-variant rounded-full font-bold">Offline</span></td>
+<td class="px-6 py-4 text-right"><button class="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-colors text-sm">more_vert</button></td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/20 flex items-center justify-center text-[10px] font-bold text-tertiary">KN</div>
+<div><p class="text-sm font-medium">Kai Nakamura</p><p class="text-xs text-on-surface-variant">k.nakamura@marine-intel.org</p></div>
+</div>
+</td>
+<td class="px-6 py-4 hidden md:table-cell"><span class="text-xs px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded-full font-bold">Scientist</span></td>
+<td class="px-6 py-4 hidden lg:table-cell text-xs text-on-surface-variant font-mono">30m ago</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-bold">Online</span></td>
+<td class="px-6 py-4 text-right"><button class="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-colors text-sm">more_vert</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Audit Log -->
+<div class="bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10"><h3 class="font-headline font-bold text-lg">System Audit Log</h3></div>
+<div class="divide-y divide-outline-variant/10">
+<div class="px-6 py-3 flex items-start gap-4 hover:bg-surface-container-high/50 transition-colors">
+<span class="text-[10px] font-mono text-on-surface-variant mt-0.5 w-24 shrink-0">11:14:08</span>
+<div class="flex-1"><p class="text-xs text-on-surface"><span class="font-bold text-primary">Dr. Aris Thorne</span> accessed <span class="font-bold">Admin Panel</span></p><p class="text-[10px] text-on-surface-variant">IP: 192.168.1.10 · Session: #AD-9841</p></div>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded-full">View</span>
+</div>
+<div class="px-6 py-3 flex items-start gap-4 hover:bg-surface-container-high/50 transition-colors">
+<span class="text-[10px] font-mono text-on-surface-variant mt-0.5 w-24 shrink-0">10:52:33</span>
+<div class="flex-1"><p class="text-xs text-on-surface"><span class="font-bold text-tertiary">Kai Nakamura</span> exported <span class="font-bold">Image Analysis Report #AL-992</span></p><p class="text-[10px] text-on-surface-variant">IP: 192.168.1.22 · Action: PDF Export</p></div>
+<span class="text-[10px] px-2 py-0.5 bg-tertiary/10 text-tertiary rounded-full">Export</span>
+</div>
+<div class="px-6 py-3 flex items-start gap-4 hover:bg-surface-container-high/50 transition-colors">
+<span class="text-[10px] font-mono text-on-surface-variant mt-0.5 w-24 shrink-0">08:42:11</span>
+<div class="flex-1"><p class="text-xs text-on-surface"><span class="font-bold text-error">SYSTEM</span> flagged alert <span class="font-bold">Critical — Sector 7G</span></p><p class="text-[10px] text-on-surface-variant">Auto-generated · Drone Alpha-01 detection</p></div>
+<span class="text-[10px] px-2 py-0.5 bg-error/10 text-error rounded-full">Alert</span>
+</div>
+<div class="px-6 py-3 flex items-start gap-4 hover:bg-surface-container-high/50 transition-colors">
+<span class="text-[10px] font-mono text-on-surface-variant mt-0.5 w-24 shrink-0">07:00:00</span>
+<div class="flex-1"><p class="text-xs text-on-surface"><span class="font-bold">SYSTEM</span> completed scheduled <span class="font-bold">Satellite Data Sync</span></p><p class="text-[10px] text-on-surface-variant">Sentinel-2 · 12,842 tiles processed</p></div>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded-full">System</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="ml-64 w-[calc(100%-16rem)] py-8 border-t border-[#41475b]/15 bg-[#070d1f] font-['Inter'] text-xs text-[#a5aac2]">
+<div class="flex justify-between items-center px-12">
+<span>© 2024 Abyssal Lens Intelligence. Protecting Oceans via AI.</span>
+<div class="flex gap-8"><a class="hover:text-[#dfe4fe]" href="#">Privacy Policy</a><a class="hover:text-[#dfe4fe]" href="#">Support</a></div>
+</div>
+</footer>
+</body></html>

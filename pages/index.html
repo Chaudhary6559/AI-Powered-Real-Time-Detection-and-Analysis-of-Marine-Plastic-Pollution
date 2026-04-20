@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abyssal Lens | Marine Intelligence Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#99f7ff",
+                      "on-primary-fixed": "#004145",
+                      "surface-dim": "#070d1f",
+                      "on-secondary": "#3c4962",
+                      "secondary-dim": "#b9c7e4",
+                      "secondary-container": "#1c253e",
+                      "primary-fixed": "#00f1fe",
+                      "secondary": "#c7d5f3",
+                      "surface-container-low": "#0c1326",
+                      "tertiary": "#47c4ff",
+                      "surface-container": "#11192e",
+                      "surface": "#050a18",
+                      "inverse-on-surface": "#4f5469",
+                      "inverse-surface": "#faf8ff",
+                      "error-dim": "#d7383b",
+                      "on-surface-variant": "#a5aac2",
+                      "surface-tint": "#99f7ff",
+                      "surface-container-highest": "#1c253e",
+                      "on-secondary-fixed-variant": "#45536c",
+                      "tertiary-container": "#2db7f2",
+                      "surface-bright": "#222b47",
+                      "on-tertiary-container": "#003044",
+                      "on-tertiary-fixed": "#001a27",
+                      "tertiary-dim": "#05a9e3",
+                      "on-primary-container": "#00555a",
+                      "on-error-container": "#ffa8a3",
+                      "on-secondary-fixed": "#29364e",
+                      "on-secondary-container": "#c3d1ee",
+                      "error-container": "#9f0519",
+                      "surface-variant": "#1c253e",
+                      "on-background": "#dfe4fe",
+                      "on-error": "#490006",
+                      "primary-container": "#00f1fe",
+                      "on-primary-fixed-variant": "#006065",
+                      "inverse-primary": "#006a70",
+                      "on-tertiary": "#003b52",
+                      "tertiary-fixed": "#37bcf7",
+                      "background": "#050a18",
+                      "on-primary": "#005f64",
+                      "surface-container-lowest": "#000000",
+                      "tertiary-fixed-dim": "#1bafe9",
+                      "on-surface": "#dfe4fe",
+                      "on-tertiary-fixed-variant": "#003e56",
+                      "outline": "#6f758b",
+                      "error": "#ff716c",
+                      "outline-variant": "#41475b",
+                      "secondary-fixed": "#c7d5f3",
+                      "secondary-fixed-dim": "#b9c7e4",
+                      "surface-container-high": "#171f36",
+                      "primary-fixed-dim": "#00e2ee",
+                      "primary-dim": "#00e2ee"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.4rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #050a18; color: #dfe4fe; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .glass-card { 
+            background: rgba(28, 37, 62, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(153, 247, 255, 0.1);
+        }
+        .nav-glass {
+            background: rgba(5, 10, 24, 0.7);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(153, 247, 255, 0.05);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at center, rgba(153, 247, 255, 0.1) 0%, transparent 70%);
+        }
+        @keyframes drift {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-drift {
+            animation: drift 8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary/30 selection:text-primary">
+<!-- Top Navigation Bar -->
+<header class="nav-glass w-full h-16 fixed top-0 left-0 flex justify-between items-center px-8 z-50">
+<div class="flex items-center gap-8">
+<div class="text-lg font-black text-[#99f7ff] uppercase tracking-widest font-headline">Abyssal Lens</div>
+<nav class="hidden md:flex items-center gap-6 font-headline text-sm">
+<a class="text-[#00F2FF] border-b-2 border-[#00F2FF] pb-1" href="dashboard.html">Dashboard</a>
+<a class="text-[#a5aac2] hover:text-[#99f7ff] transition-colors" href="image-analysis.html">Analysis</a>
+<a class="text-[#a5aac2] hover:text-[#99f7ff] transition-colors" href="geospatial.html">Satellite</a>
+<a class="text-[#a5aac2] hover:text-[#99f7ff] transition-colors" href="reports.html">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#a5aac2] text-sm">search</span>
+<input class="bg-surface-container-low/50 border-none rounded-full py-1.5 pl-10 pr-4 text-xs text-on-surface focus:ring-1 focus:ring-primary w-48" placeholder="Search coordinates..." type="text"/>
+</div>
+<a href="alerts.html" class="material-symbols-outlined text-[#a5aac2] hover:text-[#99f7ff] transition-colors">notifications</a>
+<a href="admin.html" class="material-symbols-outlined text-[#a5aac2] hover:text-[#99f7ff] transition-colors">settings</a>
+<a href="authentication.html">
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden border border-primary/20">
+<img alt="Lead Researcher Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNtLfJ_a1dWMIT3jfYFKDicDVrwBLGDUJHpFNy79QYZjsctesJPiPNLDSKDvGlmdBdaTUsCjXiP_ssFlZI9XYaX3esY9yd5CuKEdSb15Xf3y_UkadXzkWeKDpC4EDSSmjcbhr__EeY9Vfu0n_V3ZgHK-0Ac3euHULtiW0N0-IrAGZLtpe87riUrUL9PCJTA0iAFcohRnZDlN8_jkEB_g1wnLgjlyY2Pm5Y59fYGhWoprz-w8QzB_ArFRQ9S4N4T8_6nYPRHaFW6DKI"/>
+</div>
+</a>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+<div class="absolute inset-0 z-0 bg-[#050a18]">
+<!-- Cinematic Background Visual -->
+<div class="absolute inset-0 opacity-60">
+<img class="w-full h-full object-cover scale-110 blur-[2px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiUQ-Dfdtx3dXPe10rRxgDyWDY8jpTFRGi9J_vCKfcX8Eo2VFAUTyvqYEv8D1zW5PlXWUz5unLtdK4r68Bj5u2SuDVDyX_HWOvagclPlUJSALW0pJ_vDpDZ5CnzrGF2HiY0wITblgsLivqC5eZ15Tt8Ed0wwZZ8CGl54q05tIVLWG06dLGNE6c4q1kkUAn7ODz4IUhdS3iP9eLUCzfvIYG3UrvDqtnRWUbCpoQyweTfDolRdy5_q_cS5z7HDfHN-B6WVyi_cyft7NC" alt="Plastic debris in ocean"/>
+</div>
+<!-- Overlay Elements -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
+<div class="absolute inset-0 hero-gradient"></div>
+<!-- Animated Particles -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-32 h-32 opacity-20 animate-drift">
+<img class="w-full h-full object-contain filter hue-rotate-180" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0XJlP4B8IGlE8D7qMGm2Bgde1OHqvYFU7h69FW0P3wvQhXBsalNRxAnuGo2XITXjvaACotCYvksAlyn5_XYIIi6fiAtfNuYusbYWR9_RLXat6iiFzHs43OmR4osrb0QN_0a8o7L07_N4b905VkI8zfuYyLvBFtE1LQq7-skUZyoLMXafz4rbZT0tyz5kqxs5SAJlulDjJZfaLLXuvhmGAUB7eR5HkC3EUV_skf98jyjM3SLm6Ig-wtsf9Oynsrf_jI6ooMnsAtVib" alt="3D plastic bottle"/>
+</div>
+<div class="absolute bottom-1/3 right-1/4 w-48 h-48 opacity-10 animate-drift" style="animation-delay: -3s">
+<div class="w-full h-full rounded-full border border-primary/30 blur-xl bg-primary/5"></div>
+</div>
+</div>
+</div>
+<div class="container mx-auto px-8 relative z-10 text-center flex flex-col items-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 glass-card rounded-full text-primary text-[10px] font-bold mb-8 uppercase tracking-widest">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                AI Live Monitor: Active Detect Mode
+            </div>
+<h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.1] mb-8 max-w-5xl">
+                Visualizing the <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary italic">Hidden Crisis</span> in Our Oceans
+            </h1>
+<p class="text-lg md:text-xl text-on-surface-variant mb-12 max-w-2xl leading-relaxed">
+                Abyssal Lens leverages multi-spectral satellite intelligence and deep-sea AI to identify, quantify, and track marine plastic waste in real-time.
+            </p>
+<div class="flex flex-wrap justify-center gap-6">
+<a href="authentication.html" class="bg-primary text-on-primary-fixed font-black px-10 py-5 rounded-xl hover:shadow-[0_0_30px_rgba(153,247,255,0.4)] transition-all active:scale-95 text-lg">
+                    Launch Platform
+                </a>
+<a href="image-analysis.html" class="px-10 py-5 glass-card rounded-xl font-bold text-white hover:bg-white/10 transition-all text-lg">
+                    View Data Analysis
+                </a>
+</div>
+<!-- Scroll Indicator -->
+<div class="mt-24 flex flex-col items-center gap-4 opacity-50">
+<span class="text-[10px] uppercase tracking-widest font-bold">Scroll to Explore</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="py-32 bg-surface">
+<div class="container mx-auto px-8">
+<div class="mb-20 text-center md:text-left">
+<h2 class="font-headline text-4xl font-bold mb-4">Intelligence Stack</h2>
+<div class="h-1 w-12 bg-primary rounded-full mx-auto md:mx-0"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Card -->
+<div class="md:col-span-8 glass-card rounded-2xl p-10 flex flex-col justify-between group transition-all hover:bg-surface-container-highest/40 overflow-hidden min-h-[450px]">
+<div>
+<div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">satellite_alt</span>
+</div>
+<h3 class="font-headline text-3xl font-bold mb-4">Multi-Spectral Satellite Analysis</h3>
+<p class="text-on-surface-variant max-w-md text-lg leading-relaxed">Our proprietary algorithm cross-references Sentinel-2 optical data with radar SAR sensors to pierce through cloud cover and identify sub-surface debris concentrations.</p>
+</div>
+<div class="mt-8 relative h-48 -mx-10 -mb-10">
+<img class="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDebOTB6C7KIJamlB4fKW2lpabk8uPIPgFNX-GKJPqJzX2-xIouH8nl1zzeBGaMY0rSes3zs3Kz6-OFQMqZGMROGiAh8CSI5sf9z01omcl1ZS_bx5dj7van_HY7vtmB-lHIOtlT2luZO-5wm3vNC5cLJ2e-mxy745MblXfTpjkQ_qQT5OBvBW98StsDYK32BZtEfwqsSZf7zJ14tXQkPlWfvljLee5jyNldN027Uui7HrPjQWAITT4Mx85jA7WJnfNvcQAO2jN2OMlL" alt="Earth from space"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-highest/80 to-transparent"></div>
+</div>
+</div>
+<!-- Side Card -->
+<div class="md:col-span-4 glass-card rounded-2xl p-10 border border-outline-variant/10 transition-all hover:bg-surface-container-highest/40">
+<div class="w-14 h-14 rounded-xl bg-tertiary/10 flex items-center justify-center mb-8 border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-3xl">memory</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Edge AI Detection</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">Deploy neural networks on maritime vessels and drones for instantaneous identification.</p>
+<div class="p-6 bg-black/30 rounded-xl space-y-4 border border-white/5">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">HDPE Bottles</span>
+<span class="text-primary font-bold">42%</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary w-[42%] h-full rounded-full shadow-[0_0_10px_rgba(153,247,255,0.5)]"></div>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Discarded Nets</span>
+<span class="text-primary font-bold">28%</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary w-[28%] h-full rounded-full shadow-[0_0_10px_rgba(153,247,255,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- Small Grid Items -->
+<div class="md:col-span-4 glass-card rounded-2xl p-10 transition-all hover:bg-surface-container-highest/40">
+<div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">grid_view</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Dynamic Heatmaps</h3>
+<p class="text-on-surface-variant leading-relaxed">Predictive modeling for global waste accumulation zones based on seasonal currents.</p>
+</div>
+<div class="md:col-span-8 glass-card rounded-2xl p-10 transition-all hover:bg-surface-container-highest/40 relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
+<div class="relative z-10 max-w-sm">
+<div class="w-14 h-14 rounded-xl bg-tertiary/10 flex items-center justify-center mb-8 border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-3xl">history</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Historical Archive</h3>
+<p class="text-on-surface-variant leading-relaxed">Access 10+ years of oceanic data to track longitudinal impact and identify emerging pollution hotspots.</p>
+</div>
+<div class="flex-1 h-full w-full min-h-[200px] opacity-30">
+<img class="h-full w-full object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWwWZRl_fTxTVh6A1FMwBNSwKiby-vmChm15031JWVcXaMdqEeyDkFUbaCnKKm6pp0IB5ng4rqqDWuo8YcrpPgMnV7DzImzETa2TxIU6rDdmlA-b0F8IfTC2gnlb5C6AuXKLnZVe3IyuHTGqnoMsmJ5spgqQpdf-QDDGz7dBNQ8oLJQfAXL_pWLSNx4MZjJKYviffTWWlcls0rXW5OYyTq9UqcdWGoAIPogsmvTqmZzYklNC58es0F15MSmir7ifrV752MjpcOfcug" alt="Digital map"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Workflow Section -->
+<section class="py-32 relative bg-surface-container-lowest">
+<div class="container mx-auto px-8 text-center mb-20">
+<h2 class="font-headline text-5xl font-bold mb-6">From Insight to Impact</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">A unified workflow designed for governments, NGOs, and environmental researchers to move from raw data to actionable recovery operations.</p>
+</div>
+<div class="container mx-auto px-8 grid md:grid-cols-3 gap-8">
+<div class="relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 bg-primary text-on-primary-fixed rounded-xl flex items-center justify-center font-headline font-black text-xl z-10 shadow-lg shadow-primary/20">01</div>
+<div class="glass-card p-10 pt-14 rounded-2xl text-center border-t-2 border-t-primary/30 group-hover:bg-surface-container-highest transition-all h-full">
+<h4 class="font-headline text-2xl font-bold mb-4">Detect</h4>
+<p class="text-on-surface-variant leading-relaxed mb-8">Autonomous systems scan millions of square kilometers daily using multi-sensor fusion to locate debris clusters.</p>
+<span class="material-symbols-outlined text-6xl text-primary/20 group-hover:text-primary transition-all duration-500 scale-90 group-hover:scale-100">troubleshoot</span>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 bg-primary text-on-primary-fixed rounded-xl flex items-center justify-center font-headline font-black text-xl z-10 shadow-lg shadow-primary/20">02</div>
+<div class="glass-card p-10 pt-14 rounded-2xl text-center border-t-2 border-t-primary/30 group-hover:bg-surface-container-highest transition-all h-full">
+<h4 class="font-headline text-2xl font-bold mb-4">Analyze</h4>
+<p class="text-on-surface-variant leading-relaxed mb-8">Our AI engine classifies material composition and calculates drift vectors to prioritize recovery missions.</p>
+<span class="material-symbols-outlined text-6xl text-primary/20 group-hover:text-primary transition-all duration-500 scale-90 group-hover:scale-100">analytics</span>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 bg-primary text-on-primary-fixed rounded-xl flex items-center justify-center font-headline font-black text-xl z-10 shadow-lg shadow-primary/20">03</div>
+<div class="glass-card p-10 pt-14 rounded-2xl text-center border-t-2 border-t-primary/30 group-hover:bg-surface-container-highest transition-all h-full">
+<h4 class="font-headline text-2xl font-bold mb-4">Act</h4>
+<p class="text-on-surface-variant leading-relaxed mb-8">Dispatch coordinates directly to cleanup fleets and track recovery metrics in the cloud dashboard.</p>
+<span class="material-symbols-outlined text-6xl text-primary/20 group-hover:text-primary transition-all duration-500 scale-90 group-hover:scale-100">near_me</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SDG 14 Impact Section -->
+<section class="py-32 bg-surface overflow-hidden relative">
+<div class="container mx-auto px-8 flex flex-col md:flex-row items-center gap-16 relative z-10">
+<div class="md:w-1/2 relative">
+<div class="absolute inset-0 bg-primary/20 blur-[100px] -z-10 rounded-full"></div>
+<img class="rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRllbv2JHmDK04tIbgxVtTpKAOIJ6KvbeMAHh6atpAjFB_4sOyeBUzNuvrARn2tK6nwmbGIf-nhgdtb7Aza9V2ENV6yy4qoFsmvIDfww1WuH_roXDj-ikICJU74gq5Xn9d_c-dwzqktrqYkBagkF6_l0eGZa9q9pXeBHc9tQ0HwMFxQx8jMMdBiS0rmbolI_E79M5vog3Yrxy39wUM-fmqXcVPfq9EqZmEQLJ17MEeZoq0I5qSOz_4dEOeXewGikIDGSrglpFvyFW4" alt="Ocean waves"/>
+</div>
+<div class="md:w-1/2">
+<div class="inline-block px-4 py-1.5 glass-card text-primary text-[10px] font-black rounded-lg mb-8 uppercase tracking-[0.3em]">United Nations SDG 14</div>
+<h2 class="font-headline text-5xl font-bold mb-8 leading-tight">Preserving Life Below Water</h2>
+<p class="text-xl text-on-surface-variant leading-relaxed mb-12">We are committed to the 2030 Agenda for Sustainable Development. Our platform provides the vital data infrastructure needed to achieve target 14.1: preventing and significantly reducing marine pollution of all kinds.</p>
+<div class="grid grid-cols-2 gap-12">
+<div class="glass-card p-6 rounded-2xl border-l-4 border-l-primary">
+<div class="text-4xl font-headline font-bold text-primary mb-2">12.5M</div>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-bold">Tons of plastic localized</p>
+</div>
+<div class="glass-card p-6 rounded-2xl border-l-4 border-l-primary">
+<div class="text-4xl font-headline font-bold text-primary mb-2">84%</div>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-bold">Detection accuracy increase</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-40 relative text-center bg-surface-container-lowest">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(153,247,255,0.05)_0%,transparent_70%)]"></div>
+<div class="container mx-auto px-8 max-w-4xl relative z-10">
+<h2 class="font-headline text-5xl md:text-6xl font-bold mb-8 text-white">Ready to secure the future of our oceans?</h2>
+<p class="text-xl text-on-surface-variant mb-16">Join 150+ organizations already using Abyssal Lens to drive real environmental change through intelligence.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<a href="authentication.html" class="bg-primary text-on-primary-fixed font-black px-12 py-5 rounded-2xl text-lg shadow-xl shadow-primary/20 hover:scale-105 transition-all">
+                    Launch Global Monitor
+                </a>
+<button class="px-12 py-5 glass-card rounded-2xl text-lg font-bold text-white hover:bg-white/10 transition-all">
+                    Request API Key
+                </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface w-full py-16 border-t border-white/5 px-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="flex flex-col items-center md:items-start">
+<div class="text-xl font-black text-primary mb-6 font-headline uppercase tracking-widest">Abyssal Lens</div>
+<p class="font-body text-sm text-[#a5aac2] text-center md:text-left max-w-xs leading-relaxed">© 2024 Abyssal Lens Intelligence. Protecting Oceans via AI. Part of the Global Marine Initiative.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-10">
+<a class="text-sm text-[#a5aac2] hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-[#a5aac2] hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-sm text-[#a5aac2] hover:text-white transition-colors" href="#">API Documentation</a>
+<a class="text-sm text-[#a5aac2] hover:text-white transition-colors" href="#">Support</a>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-[#a5aac2] hover:text-primary transition-all hover:scale-110" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-[#a5aac2] hover:text-primary transition-all hover:scale-110" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abyssal Lens | Alerts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: {
+                "colors": {"primary":"#99f7ff","on-primary-fixed":"#004145","surface-container-low":"#0c1326","tertiary":"#47c4ff","surface-container":"#11192e","surface":"#070d1f","on-surface-variant":"#a5aac2","surface-container-highest":"#1c253e","surface-bright":"#222b47","on-background":"#dfe4fe","on-error":"#490006","primary-container":"#00f1fe","background":"#070d1f","on-primary":"#005f64","surface-container-lowest":"#000000","on-surface":"#dfe4fe","outline":"#6f758b","error":"#ff716c","outline-variant":"#41475b","surface-container-high":"#171f36","primary-dim":"#00e2ee"},
+                "borderRadius": {"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+                "fontFamily": {"headline":["Space Grotesk"],"body":["Inter"]}
+            }}
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#11192e]/60 backdrop-blur-xl w-64 border-r border-[#41475b]/15 font-['Space_Grotesk'] text-sm tracking-tight">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center"><span class="material-symbols-outlined text-surface-container-lowest font-bold">waves</span></div>
+<div><h1 class="text-xl font-bold tracking-tighter text-[#99f7ff] leading-none">Abyssal Lens</h1><p class="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mt-1">Marine Intel Platform</p></div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="live-monitoring.html"><span class="material-symbols-outlined">videocam</span><span>Live Monitor</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="image-analysis.html"><span class="material-symbols-outlined">analytics</span><span>Analysis</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="geospatial.html"><span class="material-symbols-outlined">explore</span><span>Map</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="reports.html"><span class="material-symbols-outlined">description</span><span>Reports</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#99f7ff] font-bold bg-[#1c253e] rounded-lg" href="alerts.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications_active</span><span>Alerts</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="admin.html"><span class="material-symbols-outlined">admin_panel_settings</span><span>Admin</span></a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<img alt="Dr. Aris Thorne" class="w-10 h-10 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-cm6jNnGiks47paoKTgSqxgQFZDFKr5gCrLR5HlyI7E25hwSTDKWVGIQBnXKbKx0yNGTPKl4IByQRIKyoOxGHWjtUEUA70wvXj-mPwBbLHcySeaFU9AHsjoeGEUHXKPBYoHOQoQUbBm1mKjGsHUEkiPHCrMJH9xPKO3cOTsEMbl3z0pzgUGaNi2VU40xInRGynR8GRvuBZTCu7fam1xEK0q8W19vFiEYhJBiyHeOKYp2KUEsaDXOGV6YoDtdV6rTAtdOLyLdfUhnB"/>
+<div><p class="text-xs font-bold text-on-surface">Dr. Aris Thorne</p><p class="text-[10px] text-on-surface-variant">Lead Researcher</p></div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 z-30 bg-[#070d1f]/60 backdrop-blur-md w-full h-16 border-b border-[#41475b]/15 font-['Space_Grotesk'] text-sm">
+<div class="flex items-center gap-8 flex-1">
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary/50" placeholder="Search alerts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="relative"><span class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">notifications_active</span><span class="absolute -top-1 -right-1 w-4 h-4 bg-error rounded-full text-[8px] text-white flex items-center justify-center font-bold">7</span></span>
+<a href="admin.html"><span class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">settings</span></a>
+</div>
+</header>
+<!-- Main -->
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<div class="p-8 max-w-[1600px] mx-auto">
+<div class="mb-8 flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-headline font-bold tracking-tight">Alert Center</h2>
+<p class="text-on-surface-variant mt-1">Environmental threat monitoring and notification management</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container rounded-xl text-xs font-bold flex items-center gap-2 border border-outline-variant/20 hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">tune</span>Filter</button>
+<button class="px-4 py-2 bg-error/10 text-error rounded-xl text-xs font-bold flex items-center gap-2 border border-error/20 hover:bg-error/20 transition-colors"><span class="material-symbols-outlined text-sm">mark_email_read</span>Acknowledge All</button>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container p-4 rounded-xl border border-error/20"><p class="text-[10px] text-on-surface-variant uppercase mb-1">Critical</p><p class="text-2xl font-headline font-bold text-error">07</p></div>
+<div class="bg-surface-container p-4 rounded-xl border border-tertiary/20"><p class="text-[10px] text-on-surface-variant uppercase mb-1">High</p><p class="text-2xl font-headline font-bold text-tertiary">14</p></div>
+<div class="bg-surface-container p-4 rounded-xl border border-primary/20"><p class="text-[10px] text-on-surface-variant uppercase mb-1">Medium</p><p class="text-2xl font-headline font-bold text-primary">23</p></div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/20"><p class="text-[10px] text-on-surface-variant uppercase mb-1">Low</p><p class="text-2xl font-headline font-bold text-on-surface-variant">41</p></div>
+</div>
+<!-- Alerts List -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-12 lg:col-span-8 space-y-3">
+<!-- Critical Alert -->
+<div class="p-5 bg-surface-container rounded-xl border-l-4 border-error hover:bg-surface-container-high transition-colors group">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-error" style="font-variation-settings:'FILL' 1;">emergency</span></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div><h4 class="font-headline font-bold text-on-surface">Major Spill Detected — Sector 7G</h4><p class="text-xs text-on-surface-variant">Location: 32.4°N, 142.1°W · Drone Alpha-01</p></div>
+<div class="flex items-center gap-2"><span class="text-[10px] bg-error/20 text-error px-2 py-0.5 rounded-full font-bold uppercase">CRITICAL</span><span class="text-[10px] text-on-surface-variant font-mono">08:42</span></div>
+</div>
+<p class="text-sm text-on-surface-variant">Autonomous detection flagged a large-scale polymer spill exceeding 420 mg/m³ density threshold. Immediate vessel dispatch recommended.</p>
+<div class="flex gap-3 mt-4">
+<button class="px-4 py-1.5 bg-error text-white text-xs font-bold rounded-full hover:bg-error/80 transition-colors"><span class="material-symbols-outlined text-xs align-middle mr-1">near_me</span>Dispatch Team</button>
+<button class="px-4 py-1.5 bg-surface-container-highest text-on-surface-variant text-xs rounded-full hover:bg-surface-bright transition-colors">View on Map</button>
+</div>
+</div>
+</div>
+</div>
+<!-- High Alert -->
+<div class="p-5 bg-surface-container rounded-xl border-l-4 border-tertiary hover:bg-surface-container-high transition-colors group">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-tertiary">thermostat</span></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div><h4 class="font-headline font-bold text-on-surface">Thermal Anomaly — Gamma Station</h4><p class="text-xs text-on-surface-variant">Location: Grid C-14 · Deep Monitor</p></div>
+<div class="flex items-center gap-2"><span class="text-[10px] bg-tertiary/20 text-tertiary px-2 py-0.5 rounded-full font-bold uppercase">HIGH</span><span class="text-[10px] text-on-surface-variant font-mono">08:21</span></div>
+</div>
+<p class="text-sm text-on-surface-variant">Sea surface temperature deviation of +2.4°C above seasonal baseline. Potential hydrothermal vent activity or localized industrial discharge.</p>
+<div class="flex gap-3 mt-4">
+<button class="px-4 py-1.5 bg-surface-container-highest text-on-surface text-xs font-bold rounded-full hover:bg-surface-bright transition-colors">Investigate</button>
+<button class="px-4 py-1.5 bg-surface-container-highest text-on-surface-variant text-xs rounded-full hover:bg-surface-bright transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Medium Alert -->
+<div class="p-5 bg-surface-container rounded-xl border-l-4 border-primary hover:bg-surface-container-high transition-colors group">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-primary">satellite_alt</span></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div><h4 class="font-headline font-bold text-on-surface">Satellite Pass Degraded — SENTINEL-3</h4><p class="text-xs text-on-surface-variant">System · Satellite Uplink</p></div>
+<div class="flex items-center gap-2"><span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-bold uppercase">MEDIUM</span><span class="text-[10px] text-on-surface-variant font-mono">07:55</span></div>
+</div>
+<p class="text-sm text-on-surface-variant">Cloud cover exceeding 85% over the Western Pacific has reduced Sentinel-3 image quality. Falling back to radar SAR imaging.</p>
+<div class="flex gap-3 mt-4">
+<button class="px-4 py-1.5 bg-surface-container-highest text-on-surface text-xs font-bold rounded-full hover:bg-surface-bright transition-colors">Acknowledge</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Low Alert -->
+<div class="p-5 bg-surface-container rounded-xl border-l-4 border-outline-variant/40 hover:bg-surface-container-high transition-colors group opacity-70">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-surface-variant">info</span></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div><h4 class="font-headline font-bold text-on-surface">Routine Buoy Battery Warning</h4><p class="text-xs text-on-surface-variant">Buoy Network · IOT-B-44</p></div>
+<div class="flex items-center gap-2"><span class="text-[10px] bg-outline-variant/20 text-on-surface-variant px-2 py-0.5 rounded-full font-bold uppercase">LOW</span><span class="text-[10px] text-on-surface-variant font-mono">06:12</span></div>
+</div>
+<p class="text-sm text-on-surface-variant">IoT buoy IOT-B-44 battery level is at 18%. Estimated 6 hours of remaining operation. Schedule recharge vessel dispatch.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Config Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-4">
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<h3 class="font-headline font-bold text-on-surface mb-6 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">tune</span>Threshold Config</h3>
+<div class="space-y-5">
+<div>
+<div class="flex justify-between mb-2"><label class="text-xs text-on-surface-variant">Plastic Density (mg/m³)</label><span class="text-xs font-mono text-primary">350.0</span></div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" type="range" value="70"/>
+</div>
+<div>
+<div class="flex justify-between mb-2"><label class="text-xs text-on-surface-variant">Temperature Δ (°C)</label><span class="text-xs font-mono text-primary">2.0</span></div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" type="range" value="40"/>
+</div>
+<div>
+<div class="flex justify-between mb-2"><label class="text-xs text-on-surface-variant">AI Confidence Threshold</label><span class="text-xs font-mono text-primary">85%</span></div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" type="range" value="85"/>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<h3 class="font-headline font-bold text-on-surface mb-6 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">notifications</span>Notification Routing</h3>
+<div class="space-y-3">
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-on-surface">Email Alerts</span>
+<div class="w-10 h-5 bg-primary rounded-full relative"><div class="w-4 h-4 bg-white rounded-full absolute right-0.5 top-0.5"></div></div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-on-surface">SMS Critical</span>
+<div class="w-10 h-5 bg-primary rounded-full relative"><div class="w-4 h-4 bg-white rounded-full absolute right-0.5 top-0.5"></div></div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-on-surface">Webhook (API)</span>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full relative border border-outline-variant/20"><div class="w-4 h-4 bg-on-surface-variant rounded-full absolute left-0.5 top-0.5"></div></div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-on-surface">Slack Integration</span>
+<div class="w-10 h-5 bg-primary rounded-full relative"><div class="w-4 h-4 bg-white rounded-full absolute right-0.5 top-0.5"></div></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="ml-64 w-[calc(100%-16rem)] py-8 border-t border-[#41475b]/15 bg-[#070d1f] font-['Inter'] text-xs text-[#a5aac2]">
+<div class="flex justify-between items-center px-12">
+<span>© 2024 Abyssal Lens Intelligence. Protecting Oceans via AI.</span>
+<div class="flex gap-8"><a class="hover:text-[#dfe4fe]" href="#">Privacy Policy</a><a class="hover:text-[#dfe4fe]" href="#">Support</a></div>
+</div>
+</footer>
+</body></html>

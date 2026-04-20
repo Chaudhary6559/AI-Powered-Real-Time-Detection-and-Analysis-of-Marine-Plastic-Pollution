@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abyssal Lens | Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: {
+                "colors": {"primary":"#99f7ff","on-primary-fixed":"#004145","surface-container-low":"#0c1326","tertiary":"#47c4ff","surface-container":"#11192e","surface":"#070d1f","on-surface-variant":"#a5aac2","surface-container-highest":"#1c253e","surface-bright":"#222b47","on-background":"#dfe4fe","primary-container":"#00f1fe","background":"#070d1f","on-primary":"#005f64","surface-container-lowest":"#000000","on-surface":"#dfe4fe","outline":"#6f758b","error":"#ff716c","outline-variant":"#41475b","surface-container-high":"#171f36","primary-dim":"#00e2ee"},
+                "borderRadius": {"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+                "fontFamily": {"headline":["Space Grotesk"],"body":["Inter"]}
+            }}
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#11192e]/60 backdrop-blur-xl w-64 border-r border-[#41475b]/15 font-['Space_Grotesk'] text-sm tracking-tight">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center"><span class="material-symbols-outlined text-surface-container-lowest font-bold">waves</span></div>
+<div><h1 class="text-xl font-bold tracking-tighter text-[#99f7ff] leading-none">Abyssal Lens</h1><p class="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mt-1">Marine Intel Platform</p></div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="live-monitoring.html"><span class="material-symbols-outlined">videocam</span><span>Live Monitor</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="image-analysis.html"><span class="material-symbols-outlined">analytics</span><span>Analysis</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="geospatial.html"><span class="material-symbols-outlined">explore</span><span>Map</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#99f7ff] font-bold bg-[#1c253e] rounded-lg" href="reports.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">description</span><span>Reports</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="alerts.html"><span class="material-symbols-outlined">notifications_active</span><span>Alerts</span></a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="admin.html"><span class="material-symbols-outlined">admin_panel_settings</span><span>Admin</span></a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<img alt="Dr. Aris Thorne" class="w-10 h-10 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-cm6jNnGiks47paoKTgSqxgQFZDFKr5gCrLR5HlyI7E25hwSTDKWVGIQBnXKbKx0yNGTPKl4IByQRIKyoOxGHWjtUEUA70wvXj-mPwBbLHcySeaFU9AHsjoeGEUHXKPBYoHOQoQUbBm1mKjGsHUEkiPHCrMJH9xPKO3cOTsEMbl3z0pzgUGaNi2VU40xInRGynR8GRvuBZTCu7fam1xEK0q8W19vFiEYhJBiyHeOKYp2KUEsaDXOGV6YoDtdV6rTAtdOLyLdfUhnB"/>
+<div><p class="text-xs font-bold text-on-surface">Dr. Aris Thorne</p><p class="text-[10px] text-on-surface-variant">Lead Researcher</p></div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 z-30 bg-[#070d1f]/60 backdrop-blur-md w-full h-16 border-b border-[#41475b]/15 font-['Space_Grotesk'] text-sm">
+<h2 class="text-lg font-headline font-bold text-on-surface flex-1">Intelligence Reports</h2>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<a href="alerts.html"><span class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">notifications</span></a>
+<a href="admin.html"><span class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">settings</span></a>
+</div>
+</header>
+<!-- Main -->
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<div class="p-8 max-w-[1600px] mx-auto">
+<!-- Header Actions -->
+<div class="mb-8 flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-headline font-bold tracking-tight">Intelligence Reports</h2>
+<p class="text-on-surface-variant mt-1">Generate, schedule, and distribute analytical intelligence packages</p>
+</div>
+<button class="px-5 py-2.5 bg-primary text-on-primary font-bold rounded-full text-sm flex items-center gap-2 hover:shadow-[0_0_20px_rgba(153,247,255,0.3)] transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add</span>New Report
+</button>
+</div>
+<!-- Filter Row -->
+<div class="flex gap-4 mb-8 p-4 bg-surface-container rounded-xl border border-outline-variant/10">
+<div class="flex gap-2 flex-wrap">
+<button class="px-4 py-1.5 bg-surface-container-highest text-primary rounded-full text-xs font-bold border border-primary/30">All Reports</button>
+<button class="px-4 py-1.5 bg-surface-container-low text-on-surface-variant rounded-full text-xs hover:bg-surface-container-high transition-colors">Monthly</button>
+<button class="px-4 py-1.5 bg-surface-container-low text-on-surface-variant rounded-full text-xs hover:bg-surface-container-high transition-colors">Incident</button>
+<button class="px-4 py-1.5 bg-surface-container-low text-on-surface-variant rounded-full text-xs hover:bg-surface-container-high transition-colors">Seasonal</button>
+<button class="px-4 py-1.5 bg-surface-container-low text-on-surface-variant rounded-full text-xs hover:bg-surface-container-high transition-colors">Regulatory</button>
+</div>
+<div class="ml-auto flex gap-4 items-center">
+<select class="bg-surface-container-low text-on-surface-variant text-xs rounded-lg border border-outline-variant/15 px-3 py-1.5 focus:ring-1 focus:ring-primary"><option>All Regions</option><option>North Pacific</option><option>Indian Ocean</option><option>Atlantic</option></select>
+<select class="bg-surface-container-low text-on-surface-variant text-xs rounded-lg border border-outline-variant/15 px-3 py-1.5 focus:ring-1 focus:ring-primary"><option>Last 30 Days</option><option>Last Quarter</option><option>Year to Date</option></select>
+</div>
+</div>
+<!-- Charts Row -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<div class="col-span-12 lg:col-span-8 bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-center mb-6">
+<div><h3 class="font-headline font-bold text-lg">Plastic Detection Trend</h3><p class="text-xs text-on-surface-variant">mg/m³ — North Pacific Gyre · Q1 2024</p></div>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-[10px] bg-surface-container-highest text-primary rounded-full border border-primary/20 font-bold">Monthly</button>
+<button class="px-3 py-1 text-[10px] text-on-surface-variant rounded-full hover:bg-surface-container-high transition-colors">Weekly</button>
+</div>
+</div>
+<div class="h-48 relative flex items-end gap-3 px-2">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none pb-6">
+<div class="flex items-center gap-2"><span class="text-[10px] text-on-surface-variant w-10 text-right">500</span><div class="flex-1 border-t border-outline-variant/10"></div></div>
+<div class="flex items-center gap-2"><span class="text-[10px] text-on-surface-variant w-10 text-right">375</span><div class="flex-1 border-t border-outline-variant/10"></div></div>
+<div class="flex items-center gap-2"><span class="text-[10px] text-on-surface-variant w-10 text-right">250</span><div class="flex-1 border-t border-outline-variant/10"></div></div>
+<div class="flex items-center gap-2"><span class="text-[10px] text-on-surface-variant w-10 text-right">125</span><div class="flex-1 border-t border-outline-variant/10"></div></div>
+</div>
+<div class="relative z-10 flex items-end gap-2 w-full pl-12 pb-6">
+<div class="flex-1 flex flex-col items-center gap-1"><div class="w-full rounded-t bg-primary/30 hover:bg-primary/60 transition-colors cursor-pointer" style="height: 55%"></div><span class="text-[9px] text-on-surface-variant">Jan</span></div>
+<div class="flex-1 flex flex-col items-center gap-1"><div class="w-full rounded-t bg-primary/30 hover:bg-primary/60 transition-colors cursor-pointer" style="height: 70%"></div><span class="text-[9px] text-on-surface-variant">Feb</span></div>
+<div class="flex-1 flex flex-col items-center gap-1"><div class="w-full rounded-t bg-primary hover:bg-primary/80 transition-colors cursor-pointer shadow-[0_-4px_10px_rgba(153,247,255,0.3)]" style="height: 85%"></div><span class="text-[9px] text-on-surface-variant">Mar</span></div>
+<div class="flex-1 flex flex-col items-center gap-1"><div class="w-full rounded-t bg-primary/30 hover:bg-primary/60 transition-colors cursor-pointer" style="height: 60%"></div><span class="text-[9px] text-on-surface-variant">Apr</span></div>
+<div class="flex-1 flex flex-col items-center gap-1"><div class="w-full rounded-t bg-primary/30 hover:bg-primary/60 transition-colors cursor-pointer" style="height: 45%"></div><span class="text-[9px] text-on-surface-variant">May</span></div>
+<div class="flex-1 flex flex-col items-center gap-1"><div class="w-full rounded-t bg-primary/30 hover:bg-primary/60 transition-colors cursor-pointer" style="height: 72%"></div><span class="text-[9px] text-on-surface-variant">Jun</span></div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<h3 class="font-headline font-bold text-lg mb-6">Debris Composition</h3>
+<div class="flex justify-center mb-6">
+<div class="relative w-36 h-36">
+<svg viewBox="0 0 36 36" class="w-full h-full -rotate-90">
+<circle cx="18" cy="18" r="15.9" fill="none" stroke="#1c253e" stroke-width="3"/>
+<circle cx="18" cy="18" r="15.9" fill="none" stroke="#99f7ff" stroke-width="3" stroke-dasharray="42 58" stroke-dashoffset="0"/>
+<circle cx="18" cy="18" r="15.9" fill="none" stroke="#47c4ff" stroke-width="3" stroke-dasharray="28 72" stroke-dashoffset="-42"/>
+<circle cx="18" cy="18" r="15.9" fill="none" stroke="#ff716c" stroke-width="3" stroke-dasharray="18 82" stroke-dashoffset="-70"/>
+<circle cx="18" cy="18" r="15.9" fill="none" stroke="#41475b" stroke-width="3" stroke-dasharray="12 88" stroke-dashoffset="-88"/>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center"><p class="text-xl font-headline font-bold text-primary">14,892</p><p class="text-[9px] text-on-surface-variant">Total Items</p></div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-primary shrink-0"></div><span class="text-xs text-on-surface flex-1">Single-use Plastics</span><span class="text-xs font-mono text-primary">42%</span></div>
+<div class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-tertiary shrink-0"></div><span class="text-xs text-on-surface flex-1">Fishing Gear</span><span class="text-xs font-mono text-tertiary">28%</span></div>
+<div class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-error shrink-0"></div><span class="text-xs text-on-surface flex-1">Microplastics</span><span class="text-xs font-mono text-error">18%</span></div>
+<div class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-outline-variant shrink-0"></div><span class="text-xs text-on-surface flex-1">Other</span><span class="text-xs font-mono text-on-surface-variant">12%</span></div>
+</div>
+</div>
+</div>
+<!-- Reports Table -->
+<div class="bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline font-bold text-lg">Report History</h3>
+<span class="text-xs text-on-surface-variant">42 documents found</span>
+</div>
+<table class="w-full">
+<thead class="bg-surface-container-highest/50">
+<tr>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Report</th>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold hidden md:table-cell">Region</th>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold hidden lg:table-cell">Generated</th>
+<th class="text-left px-6 py-3 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Status</th>
+<th class="px-6 py-3"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-6 py-4"><p class="font-medium text-sm text-on-surface">Q1 2024 North Pacific Overview</p><p class="text-xs text-on-surface-variant">Pollution density analysis · 48 pages</p></td>
+<td class="px-6 py-4 hidden md:table-cell"><span class="text-xs px-2 py-1 bg-tertiary/10 text-tertiary rounded-full">North Pacific</span></td>
+<td class="px-6 py-4 hidden lg:table-cell text-xs text-on-surface-variant font-mono">2024-03-31</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-bold">Published</span></td>
+<td class="px-6 py-4 text-right"><button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">download</button></td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-6 py-4"><p class="font-medium text-sm text-on-surface">Incident Report — Sector 7G Spill</p><p class="text-xs text-on-surface-variant">Emergency response documentation · 12 pages</p></td>
+<td class="px-6 py-4 hidden md:table-cell"><span class="text-xs px-2 py-1 bg-error/10 text-error rounded-full">North Pacific</span></td>
+<td class="px-6 py-4 hidden lg:table-cell text-xs text-on-surface-variant font-mono">2024-04-10</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-error/10 text-error rounded-full font-bold">Draft</span></td>
+<td class="px-6 py-4 text-right"><button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">download</button></td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-6 py-4"><p class="font-medium text-sm text-on-surface">2023 Annual Biodiversity Impact</p><p class="text-xs text-on-surface-variant">Longitudinal ecological study · 124 pages</p></td>
+<td class="px-6 py-4 hidden md:table-cell"><span class="text-xs px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded-full">Global</span></td>
+<td class="px-6 py-4 hidden lg:table-cell text-xs text-on-surface-variant font-mono">2024-01-15</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-bold">Published</span></td>
+<td class="px-6 py-4 text-right"><button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">download</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<footer class="ml-64 w-[calc(100%-16rem)] py-8 border-t border-[#41475b]/15 bg-[#070d1f] font-['Inter'] text-xs text-[#a5aac2]">
+<div class="flex justify-between items-center px-12">
+<span>© 2024 Abyssal Lens Intelligence. Protecting Oceans via AI.</span>
+<div class="flex gap-8"><a class="hover:text-[#dfe4fe]" href="#">Privacy Policy</a><a class="hover:text-[#dfe4fe]" href="#">Support</a></div>
+</div>
+</footer>
+</body></html>

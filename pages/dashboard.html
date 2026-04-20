@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abyssal Lens | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#99f7ff","on-primary-fixed": "#004145","surface-dim": "#070d1f","on-secondary": "#3c4962","secondary-dim": "#b9c7e4","secondary-container": "#39475f","primary-fixed": "#00f1fe","secondary": "#c7d5f3","surface-container-low": "#0c1326","tertiary": "#47c4ff","surface-container": "#11192e","surface": "#070d1f","inverse-on-surface": "#4f5469","inverse-surface": "#faf8ff","error-dim": "#d7383b","on-surface-variant": "#a5aac2","surface-tint": "#99f7ff","surface-container-highest": "#1c253e","on-secondary-fixed-variant": "#45536c","tertiary-container": "#2db7f2","surface-bright": "#222b47","on-tertiary-container": "#003044","on-tertiary-fixed": "#001a27","tertiary-dim": "#05a9e3","on-primary-container": "#00555a","on-error-container": "#ffa8a3","on-secondary-fixed": "#29364e","on-secondary-container": "#c3d1ee","error-container": "#9f0519","surface-variant": "#1c253e","on-background": "#dfe4fe","on-error": "#490006","primary-container": "#00f1fe","on-primary-fixed-variant": "#006065","inverse-primary": "#006a70","on-tertiary": "#003b52","tertiary-fixed": "#37bcf7","background": "#070d1f","on-primary": "#005f64","surface-container-lowest": "#000000","tertiary-fixed-dim": "#1bafe9","on-surface": "#dfe4fe","on-tertiary-fixed-variant": "#003e56","outline": "#6f758b","error": "#ff716c","outline-variant": "#41475b","secondary-fixed": "#c7d5f3","secondary-fixed-dim": "#b9c7e4","surface-container-high": "#171f36","primary-fixed-dim": "#00e2ee","primary-dim": "#00e2ee"
+            },
+            "borderRadius": {"DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem"},
+            "fontFamily": {"headline": ["Space Grotesk"],"body": ["Inter"],"label": ["Inter"]}
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #070d1f; color: #dfe4fe; }
+        .biolume-gradient {
+            background: linear-gradient(180deg, rgba(153, 247, 255, 0.15) 0%, rgba(153, 247, 255, 0) 100%);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#11192e]/60 backdrop-blur-xl h-screen w-64 border-r border-[#41475b]/15 shadow-[40px_0_60px_-15px_rgba(7,13,31,0.6)] font-['Space_Grotesk'] text-sm tracking-tight">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tighter text-[#99f7ff]">Abyssal Lens</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Marine Intel Platform</p>
+</div>
+</div>
+<nav class="flex-1 px-4 mt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#99f7ff] font-bold bg-[#1c253e] rounded-lg" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span><span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="live-monitoring.html">
+<span class="material-symbols-outlined">videocam</span><span>Live Monitor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="image-analysis.html">
+<span class="material-symbols-outlined">analytics</span><span>Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="geospatial.html">
+<span class="material-symbols-outlined">explore</span><span>Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="reports.html">
+<span class="material-symbols-outlined">description</span><span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="alerts.html">
+<span class="material-symbols-outlined">notifications_active</span><span>Alerts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="admin.html">
+<span class="material-symbols-outlined">admin_panel_settings</span><span>Admin</span>
+</a>
+</nav>
+<div class="p-6">
+<div class="bg-surface-container-highest rounded-xl p-4 border border-outline-variant/15">
+<p class="text-xs text-on-surface-variant mb-2">Deep Sea Capacity</p>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[74%]"></div>
+</div>
+<p class="text-[10px] mt-2 text-primary">74% Intel Synthesis</p>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 z-30 bg-[#070d1f]/60 backdrop-blur-md w-full h-16 border-b border-[#41475b]/15 font-['Space_Grotesk'] text-sm">
+<div class="flex items-center gap-8 flex-1">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-1.5 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary transition-all" placeholder="Search marine data..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-[#a5aac2]">
+<a href="alerts.html" class="material-symbols-outlined hover:text-[#99f7ff] cursor-pointer transition-colors">notifications</a>
+<a href="admin.html" class="material-symbols-outlined hover:text-[#99f7ff] cursor-pointer transition-colors">settings</a>
+<span class="material-symbols-outlined hover:text-[#99f7ff] cursor-pointer transition-colors">help</span>
+</div>
+<div class="h-8 w-px bg-outline-variant/20 mx-2"></div>
+<a href="authentication.html" class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface leading-tight">Dr. Aris Thorne</p>
+<p class="text-[10px] text-on-surface-variant">Lead Researcher</p>
+</div>
+<img class="w-9 h-9 rounded-full object-cover border border-primary/30 group-hover:border-primary transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoVZZjqabKvns_9i-5fhEPXLe7yYf2e3vPvm8N9F1RYYMod-pFBmKC72pPZjxSZO4ztRVNOaIt1SgEQJrajspL5uuCcxj9DJzQDVh6em4__upfvf_1-JxCaQ-EBHF5cwbiBZ1Vsv9pHAM33-Flf7HPPrr3Vlp-1eQ_D4CkSlRmYVW-pcWVVI3l3v6xsx9qXljvZCauPaPdtuQ9hPrCNe9KJucZPmM_4VpZOc_6gLBcOVscQZg1bxDH0r-0B8LHBSzVyH6XNa5Ds5yQ" alt="Dr. Aris Thorne"/>
+</a>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-64 pt-16 min-h-screen bg-surface">
+<div class="p-8 max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<div class="mb-8">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary">Live Operations Active</span>
+</div>
+<h2 class="text-3xl font-bold font-headline text-on-surface tracking-tight">Fleet Command Overview</h2>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- KPI Row -->
+<div class="col-span-12 lg:col-span-3">
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-all group h-full flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">analytics</span>
+<span class="text-xs font-bold text-primary">+12.4%</span>
+</div>
+<p class="text-on-surface-variant text-xs uppercase tracking-wider mb-1">Total Detections</p>
+<h3 class="text-3xl font-bold font-headline">14,892</h3>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] text-on-surface-variant">Automated drone sweeps completed: <span class="text-on-surface">842</span></p>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3">
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-all h-full flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary p-2 bg-tertiary/10 rounded-lg">waves</span>
+<span class="text-xs font-bold text-tertiary">-4.1%</span>
+</div>
+<p class="text-on-surface-variant text-xs uppercase tracking-wider mb-1">Plastic Density</p>
+<h3 class="text-3xl font-bold font-headline">42.8<span class="text-sm font-normal text-on-surface-variant ml-1">kg/km²</span></h3>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] text-on-surface-variant">Average deviation: <span class="text-on-surface">±2.4kg</span></p>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3">
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-all h-full flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">sensors</span>
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary/30"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary/30"></span>
+</div>
+</div>
+<p class="text-on-surface-variant text-xs uppercase tracking-wider mb-1">Active Streams</p>
+<h3 class="text-3xl font-bold font-headline">124</h3>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] text-on-surface-variant">Real-time telemetry locked: <span class="text-on-surface">98%</span></p>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3">
+<div class="bg-surface-container p-6 rounded-xl border border-error/20 hover:border-error/40 transition-all h-full flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-error/5 blur-2xl rounded-full -mr-12 -mt-12"></div>
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-error p-2 bg-error/10 rounded-lg" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-xs font-bold text-error">CRITICAL</span>
+</div>
+<p class="text-on-surface-variant text-xs uppercase tracking-wider mb-1">Critical Alerts</p>
+<h3 class="text-3xl font-bold font-headline">07</h3>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] text-on-surface-variant">Latest: <span class="text-error font-medium">Spill Detected Sector 7G</span></p>
+</div>
+</div>
+</div>
+<!-- Detection Trends Chart -->
+<div class="col-span-12 xl:col-span-8">
+<div class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden h-[420px]">
+<div class="flex justify-between items-end mb-8 relative z-10">
+<div>
+<h4 class="text-lg font-bold font-headline">Detection Synthesis</h4>
+<p class="text-xs text-on-surface-variant">Longitudinal analysis of micro-plastic clustering</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline-variant/15 text-on-surface">24H</button>
+<button class="px-4 py-1.5 rounded-full bg-transparent text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">7D</button>
+<button class="px-4 py-1.5 rounded-full bg-transparent text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">30D</button>
+</div>
+</div>
+<div class="relative h-64 w-full flex items-end gap-1">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-t border-outline-variant/10 w-full h-px"></div>
+<div class="border-t border-outline-variant/10 w-full h-px"></div>
+<div class="border-t border-outline-variant/10 w-full h-px"></div>
+<div class="border-t border-outline-variant/10 w-full h-px"></div>
+</div>
+<svg class="absolute bottom-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 100">
+<defs>
+<linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#99f7ff" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#99f7ff" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M0,80 Q100,20 200,60 T400,40 T600,70 T800,30 T1000,50 L1000,100 L0,100 Z" fill="url(#chartGradient)"></path>
+<path d="M0,80 Q100,20 200,60 T400,40 T600,70 T800,30 T1000,50" fill="none" stroke="#99f7ff" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="200" cy="60" fill="#070d1f" r="4" stroke="#99f7ff" stroke-width="2"></circle>
+<circle cx="600" cy="70" fill="#070d1f" r="4" stroke="#99f7ff" stroke-width="2"></circle>
+<circle cx="800" cy="30" fill="#070d1f" r="4" stroke="#99f7ff" stroke-width="2"></circle>
+</svg>
+<div class="absolute bottom-0 left-0 w-full flex justify-between px-2 pt-4">
+<span class="text-[10px] text-on-surface-variant font-medium">00:00</span>
+<span class="text-[10px] text-on-surface-variant font-medium">06:00</span>
+<span class="text-[10px] text-on-surface-variant font-medium">12:00</span>
+<span class="text-[10px] text-on-surface-variant font-medium">18:00</span>
+<span class="text-[10px] text-on-surface-variant font-medium">23:59</span>
+</div>
+</div>
+<div class="mt-12 flex gap-8">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_rgba(153,247,255,0.6)]"></span>
+<span class="text-xs font-medium">Macro-Plastics</span>
+</div>
+<div class="flex items-center gap-2 opacity-40">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="text-xs font-medium">Micro-Fibers</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Mini Map Preview -->
+<div class="col-span-12 xl:col-span-4">
+<div class="bg-surface-container-low rounded-xl overflow-hidden h-[420px] flex flex-col border border-outline-variant/10">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<div>
+<h4 class="text-lg font-bold font-headline">Hotspot Clusters</h4>
+<p class="text-xs text-on-surface-variant">North Pacific Subtropical Gyre</p>
+</div>
+<a href="geospatial.html" class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">fullscreen</span>
+</a>
+</div>
+<div class="flex-1 relative group">
+<img class="w-full h-full object-cover grayscale brightness-50 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRgmzoNDa5MPOXs7ZsvZlq5d2PMkcwGgXWgaFGfKeagu85VuxWry8bq8Kcg6IW-h3KiiisTlwkk2_mFLnLMDXWPghN8OtwnzsGZcHkAMoLHhgSfmXESa38KbeBU-8lk7TvHPsGgh5wvlSe4LW01aiR3XCSu6lb69SIz07YTCn-rwq6lOBULovANmVNmb8mZLEBKOOg-U7C7Sg0OEsfs7uecf4DCafWQo1sDeGXYdZTcVG5_WxCwlukUuDgU2vLK39XtAmnMAZX3Kk6" alt="Pacific Ocean satellite view"/>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="absolute top-1/3 left-1/4">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-3 h-3 bg-primary rounded-full shadow-[0_0_12px_#99f7ff]"></div>
+<div class="absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface-container px-2 py-1 rounded text-[10px] border border-primary/30">Density: High</div>
+</div>
+</div>
+<div class="absolute bottom-1/4 right-1/3">
+<div class="relative">
+<div class="w-3 h-3 bg-tertiary rounded-full shadow-[0_0_12px_#47c4ff]"></div>
+<div class="absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface-container px-2 py-1 rounded text-[10px] border border-tertiary/30">Density: Med</div>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 flex flex-col gap-2">
+<button class="w-8 h-8 rounded bg-surface-container/80 backdrop-blur text-on-surface hover:bg-surface-container transition-colors font-bold">+</button>
+<button class="w-8 h-8 rounded bg-surface-container/80 backdrop-blur text-on-surface hover:bg-surface-container transition-colors font-bold">-</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="col-span-12">
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h4 class="text-lg font-bold font-headline">Live Intelligence Feed</h4>
+<div class="flex items-center gap-4">
+<span class="text-xs text-on-surface-variant"><span class="text-primary font-bold">12</span> events in last 60m</span>
+<a href="alerts.html" class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+View Full Logs
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant/10">
+<div class="p-6 hover:bg-surface-container/50 transition-colors group">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-primary/10">
+<span class="material-symbols-outlined text-primary">biotech</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h5 class="text-sm font-bold text-on-surface">New Detection</h5>
+<span class="text-[10px] text-on-surface-variant font-mono uppercase">08:42:11</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2">Autonomous drone D-114 signaled high-density polymer cluster at coords <span class="text-on-surface">32.4°N, 142.1°W</span>.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-tighter">HD-Video</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Spectral</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 hover:bg-surface-container/50 transition-colors group">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-tertiary/10">
+<span class="material-symbols-outlined text-tertiary">sync_alt</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h5 class="text-sm font-bold text-on-surface">Telemetry Updated</h5>
+<span class="text-[10px] text-on-surface-variant font-mono uppercase">08:35:45</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2">SST sensor array reconciled against satellite imagery. Correction applied to Sector 4.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 rounded bg-tertiary/10 text-tertiary text-[10px] font-bold uppercase tracking-tighter">System</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Auto-Fix</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 hover:bg-surface-container/50 transition-colors group">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center shrink-0 border border-error/20">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h5 class="text-sm font-bold text-on-surface">Zone Intrusion</h5>
+<span class="text-[10px] text-on-surface-variant font-mono uppercase">08:12:02</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2">Non-registered vessel detected entering protected marine habitat Zone B-12. AIS Signal: NULL.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 rounded bg-error/20 text-error text-[10px] font-bold uppercase tracking-tighter">Warning</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Security</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-center px-12 py-8 space-y-4 md:space-y-0 bg-[#070d1f] border-t border-[#41475b]/15">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<p class="text-sm font-bold text-[#99f7ff] uppercase tracking-widest">Abyssal Lens</p>
+<span class="text-xs font-['Inter'] text-[#a5aac2]">© 2024 Abyssal Lens Intelligence. Protecting Oceans via AI.</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="font-['Inter'] text-xs text-[#a5aac2] hover:text-[#dfe4fe] transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs text-[#a5aac2] hover:text-[#dfe4fe] transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs text-[#a5aac2] hover:text-[#dfe4fe] transition-opacity duration-200" href="#">API Documentation</a>
+<a class="font-['Inter'] text-xs text-[#a5aac2] hover:text-[#dfe4fe] transition-opacity duration-200" href="#">Support</a>
+</div>
+</footer>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-primary-container text-on-primary-container shadow-[0_8px_24px_-4px_rgba(153,247,255,0.4)] flex items-center justify-center z-50 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</body></html>

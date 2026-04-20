@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abyssal Lens | Access Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="../assets/css/shared.css" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#99f7ff","on-primary-fixed": "#004145","surface-dim": "#070d1f","on-secondary": "#3c4962","secondary-dim": "#b9c7e4","secondary-container": "#39475f","primary-fixed": "#00f1fe","secondary": "#c7d5f3","surface-container-low": "#0c1326","tertiary": "#47c4ff","surface-container": "#11192e","surface": "#070d1f","inverse-on-surface": "#4f5469","inverse-surface": "#faf8ff","error-dim": "#d7383b","on-surface-variant": "#a5aac2","surface-tint": "#99f7ff","surface-container-highest": "#1c253e","on-secondary-fixed-variant": "#45536c","tertiary-container": "#2db7f2","surface-bright": "#222b47","on-tertiary-container": "#003044","on-tertiary-fixed": "#001a27","tertiary-dim": "#05a9e3","on-primary-container": "#00555a","on-error-container": "#ffa8a3","on-secondary-fixed": "#29364e","on-secondary-container": "#c3d1ee","error-container": "#9f0519","surface-variant": "#1c253e","on-background": "#dfe4fe","on-error": "#490006","primary-container": "#00f1fe","on-primary-fixed-variant": "#006065","inverse-primary": "#006a70","on-tertiary": "#003b52","tertiary-fixed": "#37bcf7","background": "#070d1f","on-primary": "#005f64","surface-container-lowest": "#000000","tertiary-fixed-dim": "#1bafe9","on-surface": "#dfe4fe","on-tertiary-fixed-variant": "#003e56","outline": "#6f758b","error": "#ff716c","outline-variant": "#41475b","secondary-fixed": "#c7d5f3","secondary-fixed-dim": "#b9c7e4","surface-container-high": "#171f36","primary-fixed-dim": "#00e2ee","primary-dim": "#00e2ee"
+                    },
+                    "borderRadius": {"DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem"},
+                    "fontFamily": {"headline": ["Space Grotesk"],"body": ["Inter"],"label": ["Inter"]}
+                },
+            },
+        }
+    </script>
+<style>
+        .bg-abyssal-gradient {
+            background: radial-gradient(circle at 50% 50%, #11192e 0%, #070d1f 100%);
+        }
+        .glass-panel {
+            background: rgba(28, 37, 62, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(65, 71, 91, 0.15);
+        }
+        .auth-input:focus {
+            background: #222b47;
+            box-shadow: 0 0 0 1px rgba(153, 247, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Background Elements -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-5%] right-[-5%] w-[30%] h-[30%] bg-tertiary/5 rounded-full blur-[100px]"></div>
+<div class="absolute inset-0 opacity-20">
+<div class="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+</div>
+</div>
+<!-- Login Container -->
+<main class="relative z-10 w-full max-w-md px-6">
+<!-- Brand Header -->
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-container-highest border border-outline-variant/20 mb-4 shadow-[0_0_30px_-5px_rgba(153,247,255,0.3)]">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">waves</span>
+</div>
+<h1 class="font-headline text-3xl font-bold tracking-tighter text-primary">Abyssal Lens</h1>
+<p class="font-label text-sm text-on-surface-variant uppercase tracking-widest mt-1">Marine Intelligence Platform</p>
+</div>
+<!-- Auth Form -->
+<div class="glass-panel rounded-xl p-8 shadow-2xl">
+<div class="mb-6">
+<h2 class="font-headline text-xl font-medium text-on-surface">Secure Access</h2>
+<p class="text-on-surface-variant text-sm mt-1">Establish a secure connection to the central node.</p>
+</div>
+<!-- Role Selection -->
+<div class="mb-8">
+<label class="font-label text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3 block">Authorization Level</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center py-3 px-2 rounded-lg border border-outline-variant/15 bg-surface-container-low hover:bg-surface-container-highest hover:border-primary/40 transition-all duration-300 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-1">admin_panel_settings</span>
+<span class="text-[10px] font-medium text-on-surface-variant group-hover:text-on-surface">Admin</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-2 rounded-lg border border-primary/40 bg-surface-container-highest transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px] font-medium text-on-surface">Analyst</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-2 rounded-lg border border-outline-variant/15 bg-surface-container-low hover:bg-surface-container-highest hover:border-primary/40 transition-all duration-300 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-1">biotech</span>
+<span class="text-[10px] font-medium text-on-surface-variant group-hover:text-on-surface">Scientist</span>
+</button>
+</div>
+</div>
+<form action="dashboard.html" method="get" class="space-y-5">
+<!-- Email Field -->
+<div>
+<label class="font-label text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2 block" for="email">Terminal ID / Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">alternate_email</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg py-3 pl-11 pr-4 text-on-surface placeholder:text-outline font-body text-sm transition-all duration-200 auth-input" id="email" name="email" placeholder="name@marine-intel.org" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="font-label text-xs font-semibold text-on-surface-variant uppercase tracking-wider block" for="password">Access Key</label>
+<a class="text-[10px] font-medium text-tertiary hover:text-primary transition-colors" href="#">Emergency Reset</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">lock</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg py-3 pl-11 pr-12 text-on-surface placeholder:text-outline font-body text-sm transition-all duration-200 auth-input" id="password" name="password" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center">
+<input class="w-4 h-4 rounded border-outline-variant bg-surface-container-low text-primary focus:ring-primary focus:ring-offset-surface" id="remember" type="checkbox"/>
+<label class="ml-2 text-xs text-on-surface-variant" for="remember">Secure Session Persistent (24h)</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-3.5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary-fixed font-headline font-bold text-sm tracking-wide shadow-[0_10px_20px_-5px_rgba(0,241,254,0.3)] hover:shadow-[0_12px_25px_-5px_rgba(0,241,254,0.4)] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2" type="submit">
+                    Initialize Connection
+                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</form>
+<!-- Bottom Actions -->
+<div class="mt-8 pt-6 border-t border-outline-variant/10 flex flex-col items-center gap-4">
+<p class="text-xs text-on-surface-variant">Authorized personnel only. Access is monitored.</p>
+<div class="flex gap-4">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-surface-container-highest transition-colors text-[10px] text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">language</span>
+                        EN-US
+                    </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-surface-container-highest transition-colors text-[10px] text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">support</span>
+                        Contact NOC
+                    </button>
+</div>
+</div>
+</div>
+<!-- Footer Copyright -->
+<footer class="mt-8 text-center">
+<p class="font-body text-[10px] text-on-surface-variant/60 tracking-widest uppercase">
+                © 2024 Abyssal Lens Intelligence. Protecting Oceans via AI.
+            </p>
+</footer>
+</main>
+<!-- Decorative Cards -->
+<div class="absolute bottom-10 right-10 hidden lg:block w-72 glass-panel p-5 rounded-xl border-l-2 border-l-primary/50">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-headline font-bold text-primary uppercase tracking-tighter">System Status</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-[10px] text-on-surface-variant">Central Node</span>
+<span class="text-[10px] font-mono text-primary">OPERATIONAL</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[88%] h-full bg-primary/60"></div>
+</div>
+<div class="flex justify-between items-end pt-1">
+<span class="text-[10px] text-on-surface-variant">Encryption Level</span>
+<span class="text-[10px] font-mono text-primary">AES-512-QUANTUM</span>
+</div>
+</div>
+</div>
+<div class="absolute top-10 left-10 hidden lg:block w-48 glass-panel p-4 rounded-xl">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm">location_on</span>
+<span class="text-[10px] font-headline font-medium text-on-surface tracking-tight">Point Nemo Station</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm">thermostat</span>
+<span class="text-[10px] font-headline font-medium text-on-surface tracking-tight">2.4°C Surface Temp</span>
+</div>
+</div>
+</div>
+</body></html>
