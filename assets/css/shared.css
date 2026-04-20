@@ -1,1 +1,67 @@
-fgfg
+/* =========================================================
+   Abyssal Lens — Shared Stylesheet
+   ========================================================= */
+
+/* Google Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Base body */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #070d1f;
+    color: #dfe4fe;
+}
+
+/* Glass morphism panels */
+.glass-panel {
+    background: rgba(28, 37, 62, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(65, 71, 91, 0.15);
+}
+
+.glass-card {
+    background: rgba(28, 37, 62, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(153, 247, 255, 0.1);
+}
+
+/* Utility */
+.tonal-layering-no-borders {
+    border: none !important;
+}
+
+.scale-98:active {
+    transform: scale(0.98);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #070d1f; }
+::-webkit-scrollbar-thumb { background: #1c253e; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #41475b; }
+
+/* Shared sidebar nav */
+.side-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #a5aac2;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+.side-nav-link:hover {
+    color: #dfe4fe;
+    background: rgba(28, 37, 62, 0.5);
+}
+.side-nav-link.active {
+    color: #99f7ff;
+    font-weight: 700;
+    background: #1c253e;
+}
