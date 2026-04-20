@@ -1,0 +1,29 @@
+# Abyssal Lens – Backend Dependencies
+# Python 3.12
+
+# Web Framework
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Password hashing (bundled with Flask but pinned for clarity)
+werkzeug>=3.0.0
+
+# Image Processing
+Pillow>=10.0.0
+opencv-python-headless>=4.9.0
+numpy>=1.26.0
+
+# Deep Learning – PyTorch / YOLO
+torch>=2.2.0
+torchvision>=0.17.0
+ultralytics>=8.2.0        # YOLOv8/v12 unified API
+
+# Deep Learning – TensorFlow / Keras (ResNet50 classifier)
+tensorflow>=2.16.0        # includes keras 3
+
+# Report Generation
+reportlab>=4.1.0          # PDF generation
+# csv / io are in stdlib – no extra package needed
+
+# Utilities
+python-dotenv>=1.0.0      # optional: load .env file
