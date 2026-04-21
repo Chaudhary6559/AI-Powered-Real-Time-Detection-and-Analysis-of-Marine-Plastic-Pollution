@@ -21,7 +21,7 @@ import cv2
 import numpy as np
 
 from models import yolo as yolo_model
-from models import resnet as resnet_model
+from models import resnet as cnn_model
 from services.preprocess import read_image_bgr
 from database.db import execute_db
 
@@ -123,7 +123,7 @@ def run_detection(
         if crop.size == 0:
             plastic_types.append({"label": "Unknown", "confidence": 0.0})
         else:
-            plastic_types.append(resnet_model.classify_patch(crop))
+            plastic_types.append(cnn_model.classify_patch(crop))
 
     dominant_type = (
         plastic_types[0]["label"] if plastic_types else "No detection"

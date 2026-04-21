@@ -12,7 +12,7 @@ from pathlib import Path
 
 import cv2
 
-from models import resnet as resnet_model
+from models import resnet as cnn_model
 
 
 def classify_image(image_path: Path) -> dict:
@@ -25,7 +25,7 @@ def classify_image(image_path: Path) -> dict:
     img = cv2.imread(str(image_path))
     if img is None:
         return {"label": "Unknown", "confidence": 0.0}
-    return resnet_model.classify_patch(img)
+    return cnn_model.classify_patch(img)
 
 
 def classify_detections(image_path: Path, boxes: list) -> list[dict]:
@@ -49,5 +49,5 @@ def classify_detections(image_path: Path, boxes: list) -> list[dict]:
         if crop.size == 0:
             results.append({"label": "Unknown", "confidence": 0.0})
         else:
-            results.append(resnet_model.classify_patch(crop))
+            results.append(cnn_model.classify_patch(crop))
     return results
