@@ -176,4 +176,85 @@
 <div class="flex gap-8"><a class="hover:text-[#dfe4fe]" href="#">Privacy Policy</a><a class="hover:text-[#dfe4fe]" href="#">Support</a></div>
 </div>
 </footer>
+
+<script>
+const API = 'http://localhost:5000';
+
+// ── Wire "New Report" button ───────────────────────────────────────────────
+const newReportBtn = document.querySelector('button:has(> span.material-symbols-outlined)') ||
+  [...document.querySelectorAll('button')].find(b => b.textContent.includes('New Report'));
+
+if (newReportBtn) {
+  newReportBtn.addEventListener('click', generateReport);
+}
+
+// ── Generate report ────────────────────────────────────────────────────────
+async function generateReport() {
+  if (newReportBtn) {
+    newReportBtn.textContent = 'Generating...';
+    newReportBtn.disabled = true;
+  }
+  try {
+    const res  = await fetch(`${API}/generate-report?fmt=both`);
+    const json = await res.json();
+    if (json.status !== 'success') throw new Error(json.message);
+    const d = json.data;
+
+    // Offer downloads
+    if (d.csv_url)  window.open(`${API}${d.csv_url}`, '_blank');
+    if (d.pdf_url)  setTimeout(() => window.open(`${API}${d.pdf_url}`, '_blank'), 300);
+
+    loadReportsList();
+  } catch (e) {
+    alert('Report generation failed: ' + e.message);
+  } finally {
+    if (newReportBtn) {
+      newReportBtn.innerHTML = '<span class="material-symbols-outlined text-sm">add</span>New Report';
+      newReportBtn.disabled = false;
+    }
+  }
+}
+
+// ── Load past reports into table ───────────────────────────────────────────
+async function loadReportsList() {
+  try {
+    const res  = await fetch(`${API}/reports-list`);
+    const json = await res.json();
+    if (json.status !== 'success') return;
+    const files = json.data || [];
+
+    const tbody = document.querySelector('tbody');
+    const countSpan = document.querySelector('.text-xs.text-on-surface-variant');
+    if (countSpan) countSpan.textContent = files.length + ' documents found';
+
+    if (!tbody || files.length === 0) return;
+
+    tbody.innerHTML = files.map(f => `
+      <tr class="hover:bg-surface-container-high/50 transition-colors">
+        <td class="px-6 py-4">
+          <p class="font-medium text-sm text-on-surface">${f.name}</p>
+          <p class="text-xs text-on-surface-variant">${f.type.toUpperCase()} · ${f.size_kb} KB</p>
+        </td>
+        <td class="px-6 py-4 hidden md:table-cell">
+          <span class="text-xs px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded-full">All Regions</span>
+        </td>
+        <td class="px-6 py-4 hidden lg:table-cell text-xs text-on-surface-variant font-mono">
+          ${f.name.match(/\d{8}_\d{6}/)
+            ? f.name.match(/\d{8}_\d{6}/)[0].replace(/(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})/, '$1-$2-$3 $4:$5')
+            : '—'}
+        </td>
+        <td class="px-6 py-4">
+          <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-bold">Generated</span>
+        </td>
+        <td class="px-6 py-4 text-right">
+          <a href="${API}${f.url}" target="_blank" class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">download</a>
+        </td>
+      </tr>`).join('');
+  } catch (e) {
+    console.warn('[Reports] list error:', e);
+  }
+}
+
+loadReportsList();
+</script>
 </body></html>

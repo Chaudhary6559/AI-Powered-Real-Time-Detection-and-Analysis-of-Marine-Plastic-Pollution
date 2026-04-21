@@ -1,8 +1,5 @@
 """
 app.py – Abyssal Lens Flask application factory.
-
-Registers all blueprints, initialises the database, loads ML models,
-and starts the Flask dev server when executed directly.
 """
 
 from __future__ import annotations
@@ -18,7 +15,8 @@ from database.db import init_db, close_db
 
 # ── Import model loaders ──────────────────────────────────────────────────────
 from models import yolo as yolo_model
-from models import resnet as resnet_model
+from models import resnet as cnn_model
+from models import lstm as lstm_model
 
 # ── Import route blueprints ───────────────────────────────────────────────────
 from routes.auth import auth_bp
@@ -41,12 +39,11 @@ def create_app(config_class: type = Config) -> Flask:
 
     # ── Load configuration ────────────────────────────────────────────────────
     app.config.from_object(config_class)
-    # Allow Path objects alongside strings in config
-    app.config["UPLOAD_FOLDER"] = str(Config.UPLOAD_FOLDER)
-    app.config["DB_PATH"]       = Config.DB_PATH
-    app.config["SCHEMA_PATH"]   = Config.SCHEMA_PATH
-    app.config["SECRET_KEY"]    = Config.SECRET_KEY
-    app.config["MAX_CONTENT_LENGTH"] = Config.MAX_CONTENT_LENGTH
+    app.config["UPLOAD_FOLDER"]       = str(Config.UPLOAD_FOLDER)
+    app.config["DB_PATH"]             = Config.DB_PATH
+    app.config["SCHEMA_PATH"]         = Config.SCHEMA_PATH
+    app.config["SECRET_KEY"]          = Config.SECRET_KEY
+    app.config["MAX_CONTENT_LENGTH"]  = Config.MAX_CONTENT_LENGTH
 
     # ── CORS (allow HTML frontend on any origin during dev) ───────────────────
     CORS(app, resources={r"/*": {"origins": Config.CORS_ORIGINS}})
@@ -55,18 +52,27 @@ def create_app(config_class: type = Config) -> Flask:
     init_db(app)
     app.teardown_appcontext(close_db)
 
-    # ── ML Model Loading (non-blocking – fallback mock if missing) ────────────
+    # ── ML Model Loading ───────────────────────────────────────────────────────
+    # YOLO detection model
     yolo_model.load_model(Config.YOLO_MODEL_PATH)
-    resnet_model.load_model(Config.RESNET_MODEL_PATH)
+
+    # CNN binary classifier
+    cnn_model.load_model(
+        Config.CNN_MODEL_PATH,
+        class_names_path=Config.CNN_CLASS_NAMES_PATH,
+    )
+
+    # LSTM trend predictor
+    lstm_model.load_model(Config.LSTM_MODEL_PATH)
 
     # ── Register Blueprints ───────────────────────────────────────────────────
     app.register_blueprint(auth_bp,      url_prefix="/auth")
-    app.register_blueprint(image_bp)                          # /analyze
-    app.register_blueprint(streams_bp)                        # /start-stream, /stop-stream
-    app.register_blueprint(dashboard_bp)                      # /dashboard
-    app.register_blueprint(geo_bp)                            # /geo-data
-    app.register_blueprint(reports_bp)                        # /generate-report
-    app.register_blueprint(alerts_bp)                         # /alerts
+    app.register_blueprint(image_bp)
+    app.register_blueprint(streams_bp)
+    app.register_blueprint(dashboard_bp)
+    app.register_blueprint(geo_bp)
+    app.register_blueprint(reports_bp)
+    app.register_blueprint(alerts_bp)
 
     # ── Health-check endpoint ─────────────────────────────────────────────────
     @app.get("/health")
@@ -84,7 +90,7 @@ def create_app(config_class: type = Config) -> Flask:
 
     @app.errorhandler(413)
     def payload_too_large(e):
-        return jsonify({"status": "error", "message": "File exceeds the 16 MB limit."}), 413
+        return jsonify({"status": "error", "message": "File exceeds size limit."}), 413
 
     @app.errorhandler(500)
     def internal_error(e):
@@ -100,5 +106,5 @@ if __name__ == "__main__":
         host=os.environ.get("HOST", "0.0.0.0"),
         port=int(os.environ.get("PORT", 5000)),
         debug=Config.DEBUG,
-        use_reloader=False,   # Disable reloader to avoid double model-load
+        use_reloader=False,
     )

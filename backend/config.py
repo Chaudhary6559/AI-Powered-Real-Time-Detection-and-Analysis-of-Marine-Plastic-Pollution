@@ -1,6 +1,5 @@
 """
 config.py – Centralised configuration for Abyssal Lens Flask backend.
-All environment-specific values live here so the rest of the codebase stays portable.
 """
 
 import os
@@ -20,8 +19,9 @@ class Config:
     REPORTS_FOLDER = BASE_DIR / "static" / "reports"
     ANNOTATED_FOLDER = BASE_DIR / "static" / "annotated"
 
-    MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB hard limit
+    MAX_CONTENT_LENGTH = 512 * 1024 * 1024  # 512 MB (allows large video files)
     ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "bmp"}
+    ALLOWED_VIDEO_EXTENSIONS = {"mp4", "avi", "mov", "mkv", "webm"}
 
     # ── Database ─────────────────────────────────────────────────────────────
     DB_PATH = BASE_DIR / "database" / "marine.db"
@@ -29,10 +29,15 @@ class Config:
 
     # ── ML Model Paths ───────────────────────────────────────────────────────
     YOLO_MODEL_PATH = BASE_DIR / "models" / "yolo_model.pt"
-    RESNET_MODEL_PATH = BASE_DIR / "models" / "cnn_classifier.h5"
+    YOLO_CLASS_NAMES_PATH = BASE_DIR / "models" / "yolo_class_names.json"
+
+    CNN_MODEL_PATH = BASE_DIR / "models" / "cnn_classifier.h5"
+    CNN_CLASS_NAMES_PATH = BASE_DIR / "models" / "cnn_class_names.json"
+
+    LSTM_MODEL_PATH = BASE_DIR / "models" / "lstm_trends.h5"
 
     # ── Detection Parameters ─────────────────────────────────────────────────
-    YOLO_CONF_THRESHOLD = 0.30   # minimum confidence to keep a box
+    YOLO_CONF_THRESHOLD = 0.15   # lowered from 0.30 to improve recall for custom YOLO models
     IMG_SIZE = 640               # YOLO input resolution
 
     # ── Session / Auth ───────────────────────────────────────────────────────
@@ -40,7 +45,6 @@ class Config:
     SESSION_COOKIE_SAMESITE = "Lax"
 
     # ── CORS ─────────────────────────────────────────────────────────────────
-    # Allow the HTML frontend (file:// or any localhost port) to reach the API
     CORS_ORIGINS = ["*"]
 
     # ── Video Stream ─────────────────────────────────────────────────────────

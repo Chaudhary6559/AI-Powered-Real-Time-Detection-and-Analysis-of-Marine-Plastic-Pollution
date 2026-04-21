@@ -193,4 +193,143 @@
 <div class="flex gap-8"><a class="hover:text-[#dfe4fe]" href="#">Privacy Policy</a><a class="hover:text-[#dfe4fe]" href="#">Support</a></div>
 </div>
 </footer>
+
+<script>
+const API = 'http://localhost:5000';
+
+// ── Load alerts from API ───────────────────────────────────────────────────
+async function loadAlerts() {
+  try {
+    const res  = await fetch(`${API}/alerts`);
+    const json = await res.json();
+    if (json.status !== 'success') return;
+    const alerts = json.data || [];
+
+    // Update KPI counters
+    const critCount = alerts.filter(a => a.severity === 'critical').length;
+    const highCount = alerts.filter(a => a.severity === 'high').length;
+    const medCount  = alerts.filter(a => a.severity === 'medium' || a.severity === 'warning').length;
+    const lowCount  = alerts.filter(a => a.severity === 'low' || a.severity === 'info').length;
+
+    const kpiVals = document.querySelectorAll('.grid.grid-cols-4 .text-2xl');
+    if (kpiVals.length >= 4) {
+      kpiVals[0].textContent = String(critCount).padStart(2,'0');
+      kpiVals[1].textContent = String(highCount).padStart(2,'0');
+      kpiVals[2].textContent = String(medCount).padStart(2,'0');
+      kpiVals[3].textContent = String(lowCount).padStart(2,'0');
+    }
+
+    // Notification badge in header
+    const badge = document.querySelector('.absolute.-top-1.-right-1');
+    if (badge) badge.textContent = alerts.length;
+
+    // Render alert list
+    const listContainer = document.querySelector('.col-span-12.lg\\:col-span-8.space-y-3');
+    if (!listContainer || alerts.length === 0) return;
+
+    const hardcoded = listContainer.querySelectorAll('.p-5.bg-surface-container');
+    hardcoded.forEach(el => el.remove());
+
+    const severityConfig = {
+      critical: { border: 'border-error', bg: 'bg-error/10', text: 'text-error', icon: 'emergency', label: 'CRITICAL' },
+      high:     { border: 'border-tertiary', bg: 'bg-tertiary/10', text: 'text-tertiary', icon: 'thermostat', label: 'HIGH' },
+      warning:  { border: 'border-primary', bg: 'bg-primary/10', text: 'text-primary', icon: 'satellite_alt', label: 'MEDIUM' },
+      medium:   { border: 'border-primary', bg: 'bg-primary/10', text: 'text-primary', icon: 'satellite_alt', label: 'MEDIUM' },
+      low:      { border: 'border-outline-variant/40', bg: 'bg-surface-container-highest', text: 'text-on-surface-variant', icon: 'info', label: 'LOW' },
+      info:     { border: 'border-outline-variant/40', bg: 'bg-surface-container-highest', text: 'text-on-surface-variant', icon: 'info', label: 'INFO' },
+    };
+
+    listContainer.innerHTML = alerts.map(a => {
+      const cfg = severityConfig[a.severity] || severityConfig.low;
+      const triggered = a.triggered_at ? `<span class="text-[10px] text-error ml-2">⚑ triggered ${a.triggered_at.slice(11,16)}</span>` : '';
+      return `
+        <div class="p-5 bg-surface-container rounded-xl border-l-4 ${cfg.border} hover:bg-surface-container-high transition-colors">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg ${cfg.bg} flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined ${cfg.text}">${cfg.icon}</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-start mb-2">
+                <div>
+                  <h4 class="font-headline font-bold text-on-surface">${a.name}</h4>
+                  <p class="text-xs text-on-surface-variant">${a.metric} · threshold: ${a.threshold}${triggered}</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] ${cfg.bg} ${cfg.text} px-2 py-0.5 rounded-full font-bold uppercase">${cfg.label}</span>
+                  <span class="text-[10px] text-on-surface-variant font-mono">${(a.created_at||'').slice(11,16)}</span>
+                </div>
+              </div>
+              <div class="flex gap-3 mt-3">
+                <button onclick="deleteAlert(${a.id})" class="px-4 py-1.5 bg-surface-container-highest text-error text-xs rounded-full hover:bg-surface-bright transition-colors flex items-center gap-1">
+                  <span class="material-symbols-outlined text-xs">delete</span> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+
+  } catch (e) {
+    console.warn('[Alerts] load error:', e);
+  }
+}
+
+async function deleteAlert(id) {
+  if (!confirm('Delete this alert?')) return;
+  try {
+    await fetch(`${API}/alerts/${id}`, { method: 'DELETE' });
+    loadAlerts();
+  } catch (e) { alert('Delete failed: ' + e.message); }
+}
+
+// ── Save Alert from threshold sidebar ─────────────────────────────────────
+const saveBtn = document.querySelector('button:has(> span)') ||
+  [...document.querySelectorAll('button')].find(b => /save|set/i.test(b.textContent));
+
+// Wire range sliders to display values + allow setting alerts
+document.querySelectorAll('input[type="range"]').forEach((slider, i) => {
+  const labelEl = slider.previousElementSibling?.querySelector('span:last-child');
+
+  const metrics = ['plastic_density', 'plastic_density', 'detection_count'];
+  const names   = ['Density Alert', 'Density Alert', 'Count Alert'];
+  const maxVals = [500, 5, 100];
+
+  slider.addEventListener('input', () => {
+    const val = ((parseFloat(slider.value) / 100) * maxVals[i]).toFixed(1);
+    if (labelEl) labelEl.textContent = val;
+  });
+
+  slider.addEventListener('change', async () => {
+    const threshold = parseFloat(((parseFloat(slider.value) / 100) * maxVals[i]).toFixed(1));
+    try {
+      await fetch(`${API}/set-alert`, {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ name: names[i], metric: metrics[i], threshold, severity: 'warning' })
+      });
+      setTimeout(loadAlerts, 500);
+    } catch (e) { console.warn('Set alert error:', e); }
+  });
+});
+
+// ── Check alerts ──────────────────────────────────────────────────────────
+async function checkAlerts() {
+  try {
+    await fetch(`${API}/alerts/check`);
+    loadAlerts();
+  } catch (e) {}
+}
+
+// ── Acknowledge All button ────────────────────────────────────────────────
+const ackAllBtn = [...document.querySelectorAll('button')].find(b => b.textContent.includes('Acknowledge All'));
+if (ackAllBtn) {
+  ackAllBtn.addEventListener('click', () => {
+    // Re-trigger check (marks triggered_at for anything over threshold)
+    checkAlerts();
+  });
+}
+
+loadAlerts();
+checkAlerts();
+setInterval(loadAlerts, 20000);
+</script>
 </body></html>

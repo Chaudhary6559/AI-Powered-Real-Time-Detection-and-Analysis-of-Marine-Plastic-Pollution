@@ -356,4 +356,77 @@ View Full Logs
 <button class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-primary-container text-on-primary-container shadow-[0_8px_24px_-4px_rgba(153,247,255,0.4)] flex items-center justify-center z-50 hover:scale-105 active:scale-95 transition-all">
 <span class="material-symbols-outlined text-2xl">add</span>
 </button>
+
+<script>
+const API = 'http://localhost:5000';
+
+async function loadDashboard() {
+  try {
+    const res  = await fetch(`${API}/dashboard`);
+    const json = await res.json();
+    if (json.status !== 'success') return;
+    const d = json.data;
+
+    // ── KPI Cards ──────────────────────────────────────────────────────────
+    const kpiCards = document.querySelectorAll('.col-span-12.lg\\:col-span-3 h3');
+    if (kpiCards.length >= 4) {
+      kpiCards[0].textContent = d.total_detections.toLocaleString();
+      const density = d.plastic_density?.average ?? 0;
+      kpiCards[1].innerHTML = `${density.toFixed(1)}<span class="text-sm font-normal text-on-surface-variant ml-1">kg/km²</span>`;
+      kpiCards[2].textContent = d.active_streams;
+      kpiCards[3].textContent = String(d.pending_alerts).padStart(2, '0');
+    }
+
+    // ── Trend chart bars ───────────────────────────────────────────────────
+    const trend = d.trend || [];
+    const maxCount = Math.max(...trend.map(t => t.count), 1);
+    const barContainer = document.querySelector('.relative.h-64');
+    if (barContainer && trend.length > 0) {
+      const existing = barContainer.querySelector('.trend-bars');
+      if (!existing) {
+        const barsDiv = document.createElement('div');
+        barsDiv.className = 'trend-bars absolute bottom-0 left-0 w-full flex items-end gap-px px-1 pb-8';
+        trend.forEach(pt => {
+          const pct = Math.max(4, (pt.count / maxCount) * 90);
+          const bar = document.createElement('div');
+          bar.className = 'flex-1 bg-primary/40 hover:bg-primary/70 rounded-t cursor-pointer transition-colors';
+          bar.style.height = pct + '%';
+          bar.title = `${pt.hour}: ${pt.count} detections`;
+          barsDiv.appendChild(bar);
+        });
+        barContainer.appendChild(barsDiv);
+      }
+    }
+
+    // ── Recent Detections Feed ────────────────────────────────────────────
+    const feed = d.recent_detections || [];
+    const feedContainer = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3');
+    if (feedContainer && feed.length > 0) {
+      const items = feed.slice(0, 3);
+      const cols  = feedContainer.querySelectorAll('.p-6.hover\\:bg-surface-container\\/50');
+      items.forEach((item, i) => {
+        if (!cols[i]) return;
+        const title = cols[i].querySelector('h5');
+        const desc  = cols[i].querySelector('p.text-xs');
+        const time  = cols[i].querySelector('span.font-mono');
+        if (title) title.textContent = `Detection #${item.id}`;
+        if (desc)  desc.textContent  = `${item.plastic_type || 'Unknown'} via ${item.source || 'upload'}`;
+        if (time)  time.textContent  = (item.created_at || '').slice(11, 19);
+      });
+    }
+
+    // ── Live feed counter ─────────────────────────────────────────────────
+    const eventsSpan = document.querySelector('.text-primary.font-bold');
+    if (eventsSpan && d.today_detections !== undefined) {
+      eventsSpan.textContent = d.today_detections;
+    }
+
+  } catch (e) {
+    console.warn('[Dashboard] API error:', e);
+  }
+}
+
+loadDashboard();
+setInterval(loadDashboard, 30000); // refresh every 30s
+</script>
 </body></html>

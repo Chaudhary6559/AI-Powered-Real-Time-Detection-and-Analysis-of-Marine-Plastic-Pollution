@@ -8,160 +8,399 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="../assets/css/shared.css" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: { extend: {
-                "colors": {"primary":"#99f7ff","on-primary-fixed":"#004145","surface-dim":"#070d1f","secondary-container":"#39475f","primary-fixed":"#00f1fe","secondary":"#c7d5f3","surface-container-low":"#0c1326","tertiary":"#47c4ff","surface-container":"#11192e","surface":"#070d1f","error-dim":"#d7383b","on-surface-variant":"#a5aac2","surface-container-highest":"#1c253e","tertiary-container":"#2db7f2","surface-bright":"#222b47","on-primary-container":"#00555a","on-error-container":"#ffa8a3","on-secondary-container":"#c3d1ee","error-container":"#9f0519","surface-variant":"#1c253e","on-background":"#dfe4fe","on-error":"#490006","primary-container":"#00f1fe","on-tertiary":"#003b52","background":"#070d1f","on-primary":"#005f64","surface-container-lowest":"#000000","on-surface":"#dfe4fe","outline":"#6f758b","error":"#ff716c","outline-variant":"#41475b","surface-container-high":"#171f36","primary-dim":"#00e2ee"},
-                "borderRadius": {"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
-                "fontFamily": {"headline":["Space Grotesk"],"body":["Inter"]}
-            }}
-        }
-    </script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: {
+        "colors": {"primary":"#99f7ff","on-primary-fixed":"#004145","surface-dim":"#070d1f","secondary-container":"#39475f","primary-fixed":"#00f1fe","secondary":"#c7d5f3","surface-container-low":"#0c1326","tertiary":"#47c4ff","surface-container":"#11192e","surface":"#070d1f","error-dim":"#d7383b","on-surface-variant":"#a5aac2","surface-container-highest":"#1c253e","tertiary-container":"#2db7f2","surface-bright":"#222b47","on-primary-container":"#00555a","on-error-container":"#ffa8a3","on-secondary-container":"#c3d1ee","error-container":"#9f0519","surface-variant":"#1c253e","on-background":"#dfe4fe","on-error":"#490006","primary-container":"#00f1fe","on-tertiary":"#003b52","background":"#070d1f","on-primary":"#005f64","surface-container-lowest":"#000000","on-surface":"#dfe4fe","outline":"#6f758b","error":"#ff716c","outline-variant":"#41475b","surface-container-high":"#171f36","primary-dim":"#00e2ee"},
+        "borderRadius": {"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+        "fontFamily": {"headline":["Space Grotesk"],"body":["Inter"]}
+      }}
+    }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .drop-zone-active { border-color: #99f7ff !important; background: rgba(153,247,255,0.05) !important; }
+  .spinner { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .bar { transition: width 0.6s ease; }
+</style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+
 <!-- SideNavBar -->
 <aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#11192e]/60 backdrop-blur-xl w-64 border-r border-[#41475b]/15 shadow-[40px_0_60px_-15px_rgba(7,13,31,0.6)] font-['Space_Grotesk'] text-sm tracking-tight">
-<div class="p-6">
-<div class="flex items-center gap-3 mb-10">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center">
-<span class="material-symbols-outlined text-surface-container-lowest font-bold">waves</span>
-</div>
-<div>
-<h1 class="text-xl font-bold tracking-tighter text-[#99f7ff] leading-none">Abyssal Lens</h1>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mt-1">Marine Intel Platform</p>
-</div>
-</div>
-<nav class="space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="live-monitoring.html"><span class="material-symbols-outlined">videocam</span><span>Live Monitor</span></a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#99f7ff] font-bold bg-[#1c253e] rounded-lg" href="image-analysis.html"><span class="material-symbols-outlined">analytics</span><span>Analysis</span></a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="geospatial.html"><span class="material-symbols-outlined">explore</span><span>Map</span></a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="reports.html"><span class="material-symbols-outlined">description</span><span>Reports</span></a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="alerts.html"><span class="material-symbols-outlined">notifications_active</span><span>Alerts</span></a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="admin.html"><span class="material-symbols-outlined">admin_panel_settings</span><span>Admin</span></a>
-</nav>
-</div>
-<div class="mt-auto p-6 border-t border-outline-variant/10">
-<div class="flex items-center gap-3">
-<img alt="Lead Researcher" class="w-10 h-10 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-cm6jNnGiks47paoKTgSqxgQFZDFKr5gCrLR5HlyI7E25hwSTDKWVGIQBnXKbKx0yNGTPKl4IByQRIKyoOxGHWjtUEUA70wvXj-mPwBbLHcySeaFU9AHsjoeGEUHXKPBYoHOQoQUbBm1mKjGsHUEkiPHCrMJH9xPKO3cOTsEMbl3z0pzgUGaNi2VU40xInRGynR8GRvuBZTCu7fam1xEK0q8W19vFiEYhJBiyHeOKYp2KUEsaDXOGV6YoDtdV6rTAtdOLyLdfUhnB"/>
-<div class="overflow-hidden"><p class="text-xs font-bold text-on-surface truncate">Dr. Aris Thorne</p><p class="text-[10px] text-on-surface-variant truncate">Lead Researcher</p></div>
-</div>
-</div>
+  <div class="p-6">
+    <div class="flex items-center gap-3 mb-10">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-tertiary flex items-center justify-center">
+        <span class="material-symbols-outlined text-surface-container-lowest font-bold">waves</span>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold tracking-tighter text-[#99f7ff] leading-none">Abyssal Lens</h1>
+        <p class="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mt-1">Marine Intel Platform</p>
+      </div>
+    </div>
+    <nav class="space-y-1">
+      <a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>
+      <a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="live-monitoring.html"><span class="material-symbols-outlined">videocam</span><span>Live Monitor</span></a>
+      <a class="flex items-center gap-3 px-4 py-3 text-[#99f7ff] font-bold bg-[#1c253e] rounded-lg" href="image-analysis.html"><span class="material-symbols-outlined">analytics</span><span>Analysis</span></a>
+      <a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="geospatial.html"><span class="material-symbols-outlined">explore</span><span>Map</span></a>
+      <a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="reports.html"><span class="material-symbols-outlined">description</span><span>Reports</span></a>
+      <a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="alerts.html"><span class="material-symbols-outlined">notifications_active</span><span>Alerts</span></a>
+      <a class="flex items-center gap-3 px-4 py-3 text-[#a5aac2] hover:text-[#dfe4fe] hover:bg-[#1c253e]/50 transition-all duration-300 rounded-lg" href="admin.html"><span class="material-symbols-outlined">admin_panel_settings</span><span>Admin</span></a>
+    </nav>
+  </div>
+  <div class="mt-auto p-6 border-t border-outline-variant/10">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+        <span class="material-symbols-outlined text-primary text-sm">person</span>
+      </div>
+      <div><p class="text-xs font-bold text-on-surface">Dr. Aris Thorne</p><p class="text-[10px] text-on-surface-variant">Lead Researcher</p></div>
+    </div>
+  </div>
 </aside>
+
 <!-- TopNavBar -->
 <header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 z-30 bg-[#070d1f]/60 backdrop-blur-md w-full h-16 border-b border-[#41475b]/15 font-['Space_Grotesk'] text-sm">
-<div class="flex items-center gap-8 flex-1">
-<div class="relative w-96">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary/50" placeholder="Search marine datasets..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full border border-outline-variant/20">
-<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-<span class="text-[10px] font-medium text-primary tracking-wider uppercase">Satellite Link Active</span>
-</div>
-<div class="flex items-center gap-4 text-on-surface-variant">
-<a href="alerts.html" class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">notifications</a>
-<a href="admin.html" class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">settings</a>
-<span class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">help</span>
-</div>
-</div>
+  <div class="flex items-center gap-8 flex-1">
+    <div class="relative w-96">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+      <input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary/50" placeholder="Search marine datasets..." type="text"/>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full border border-outline-variant/20">
+      <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+      <span class="text-[10px] font-medium text-primary tracking-wider uppercase">System Active</span>
+    </div>
+    <div class="flex items-center gap-4 text-on-surface-variant">
+      <a href="alerts.html" class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">notifications</a>
+      <a href="admin.html" class="material-symbols-outlined cursor-pointer hover:text-[#99f7ff] transition-colors">settings</a>
+    </div>
+  </div>
 </header>
+
 <!-- Main Canvas -->
 <main class="ml-64 pt-16 min-h-screen bg-surface">
-<div class="p-8 max-w-[1600px] mx-auto">
-<div class="mb-8">
-<h2 class="text-3xl font-headline font-bold text-on-surface tracking-tight">Image Analysis</h2>
-<p class="text-on-surface-variant mt-1">Deep-sea debris detection and AI-assisted classification</p>
-</div>
-<div class="grid grid-cols-12 gap-6">
-<!-- Analysis Area -->
-<div class="col-span-12 lg:col-span-8 space-y-6">
-<div class="relative aspect-[16/10] bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/10 shadow-2xl">
-<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, #41475b 1px, transparent 0); background-size: 24px 24px;"></div>
-<div class="absolute inset-0 flex items-center justify-center p-8">
-<div class="relative w-full h-full rounded-lg overflow-hidden border border-outline-variant/20">
-<img alt="Underwater Ocean Floor" class="w-full h-full object-cover grayscale-[0.2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUQ-31mVBAb99adkEYGr78tcISl5sckpiLDMVMFPfWu36gzfYmWlk7tuCU5qOLTK_RQ7ZpRFDw1uMnBcbRIt8LwT-NYBEx-gfN3c8Kqd8re28XtpcJNvZ5F4irajM0hLJeKWWk5_mQzL0SI_E5iwc_WpBO15uoidBKDdIz3gWRjjUrlDlIkcpiEbvIgzwdUs6oan7lfJatsMXggG9oCwbaDjMeSdZ4pYIUVxriRFUc-nzvyMGyQ1vQjS8NhKCNZXBO3lqxf99qQgCr"/>
-<div class="absolute top-[25%] left-[40%] w-24 h-40 border-2 border-primary rounded shadow-[0_0_15px_rgba(153,247,255,0.4)] bg-primary/5">
-<div class="absolute -top-6 left-0 flex items-center gap-2"><span class="bg-primary text-surface-container-lowest text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">Plastic_Bottle</span><span class="text-primary text-[10px] font-mono">98.4%</span></div>
-</div>
-<div class="absolute top-[60%] left-[15%] w-56 h-32 border-2 border-tertiary rounded shadow-[0_0_15px_rgba(71,196,255,0.4)] bg-tertiary/5">
-<div class="absolute -top-6 left-0 flex items-center gap-2"><span class="bg-tertiary text-surface-container-lowest text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">Fishing_Gear</span><span class="text-tertiary text-[10px] font-mono">82.1%</span></div>
-</div>
-<div class="absolute top-[10%] left-[70%] w-16 h-16 border-2 border-error rounded shadow-[0_0_15px_rgba(255,113,108,0.4)] bg-error/5">
-<div class="absolute -top-6 left-0 flex items-center gap-2"><span class="bg-error text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">Microplastic</span><span class="text-error text-[10px] font-mono">94.7%</span></div>
-</div>
-</div>
-</div>
-<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-[#1c253e]/80 backdrop-blur-md p-1.5 rounded-full border border-outline-variant/20">
-<button class="p-2 hover:bg-surface-container-highest rounded-full text-on-surface-variant transition-colors"><span class="material-symbols-outlined text-sm">remove</span></button>
-<span class="px-3 text-[10px] font-mono text-primary">125%</span>
-<button class="p-2 hover:bg-surface-container-highest rounded-full text-on-surface-variant transition-colors"><span class="material-symbols-outlined text-sm">add</span></button>
-<div class="w-[1px] h-4 bg-outline-variant/30 mx-1"></div>
-<button class="p-2 hover:bg-surface-container-highest rounded-full text-on-surface-variant transition-colors"><span class="material-symbols-outlined text-sm">fit_screen</span></button>
-</div>
-</div>
-<div class="bg-surface-container-low p-8 rounded-xl border-2 border-dashed border-outline-variant/20 flex flex-col items-center justify-center group hover:border-primary/40 transition-all duration-300">
-<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
-</div>
-<h4 class="text-lg font-headline font-medium text-on-surface">Upload more telemetry frames</h4>
-<p class="text-on-surface-variant text-sm mt-1">Drag and drop oceanographic imagery or <button class="text-primary hover:underline">browse files</button></p>
-<p class="text-[10px] text-on-surface-variant/50 uppercase tracking-widest mt-6">Supports .RAW, .JPG, .PNG up to 128MB</p>
-</div>
-</div>
-<!-- Results Sidebar -->
-<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
-<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/5 shadow-xl">
-<div class="flex justify-between items-start mb-6">
-<div><h3 class="font-headline font-bold text-lg text-on-surface">Detection Summary</h3><p class="text-xs text-on-surface-variant">Frame ID: #AL-992-TX</p></div>
-<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">Live Scan</span>
-</div>
-<div class="space-y-4">
-<div class="p-4 bg-surface-container-highest rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all">
-<div class="flex justify-between items-center mb-3"><div class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-primary"></div><span class="text-sm font-medium">Single-use Plastic Bottle</span></div><span class="text-xs font-mono text-primary">98.4%</span></div>
-<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-[98%] h-full bg-primary"></div></div>
-</div>
-<div class="p-4 bg-surface-container-highest rounded-lg border border-outline-variant/10 hover:border-tertiary/40 transition-all">
-<div class="flex justify-between items-center mb-3"><div class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-tertiary"></div><span class="text-sm font-medium">Discarded Fishing Net</span></div><span class="text-xs font-mono text-tertiary">82.1%</span></div>
-<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-[82%] h-full bg-tertiary"></div></div>
-</div>
-<div class="p-4 bg-surface-container-highest rounded-lg border border-outline-variant/10 hover:border-error/40 transition-all">
-<div class="flex justify-between items-center mb-3"><div class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-error"></div><span class="text-sm font-medium">Microplastic Cluster</span></div><span class="text-xs font-mono text-error">94.7%</span></div>
-<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-[94%] h-full bg-error"></div></div>
-</div>
-</div>
-<div class="mt-8 grid grid-cols-2 gap-4">
-<button class="flex items-center justify-center gap-2 py-3 bg-surface-container-low text-on-surface rounded-full text-xs font-bold border border-outline-variant/20 hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">edit</span> Manually Label</button>
-<button class="flex items-center justify-center gap-2 py-3 bg-surface-container-low text-on-surface rounded-full text-xs font-bold border border-outline-variant/20 hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">delete</span> Clear All</button>
-</div>
-</div>
-<div class="bg-gradient-to-br from-[#11192e] to-[#0c1326] p-6 rounded-xl border border-[#41475b]/15 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-symbols-outlined text-6xl text-primary">eco</span></div>
-<h4 class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2">Ecological Assessment</h4>
-<p class="text-on-surface font-headline font-medium leading-relaxed">Detected debris poses a <span class="text-error font-bold">CRITICAL</span> threat to local crustacean colonies. Immediate ROV retrieval recommended.</p>
-<div class="mt-6 flex items-center justify-between">
-<div><p class="text-[10px] text-on-surface-variant uppercase">Estimated Mass</p><p class="text-lg font-mono text-on-surface">1.42 kg</p></div>
-<div><p class="text-[10px] text-on-surface-variant uppercase">Degradation Rate</p><p class="text-lg font-mono text-on-surface">Low (Type PE)</p></div>
-</div>
-</div>
-<div class="space-y-3">
-<button class="w-full flex items-center justify-center gap-3 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-surface-container-lowest font-bold text-sm shadow-[0_0_20px_rgba(153,247,255,0.3)] hover:brightness-110 transition-all">
-<span class="material-symbols-outlined">download</span> Export Intelligence Report
-</button>
-<button class="w-full flex items-center justify-center gap-3 py-4 rounded-full bg-transparent text-primary border border-primary/40 font-bold text-sm hover:bg-primary/5 transition-all">
-<span class="material-symbols-outlined">share</span> Push to Ocean CleanUp API
-</button>
-</div>
-</div>
-</div>
-</div>
+  <div class="p-8 max-w-[1600px] mx-auto">
+    <div class="mb-8">
+      <h2 class="text-3xl font-headline font-bold text-on-surface tracking-tight">Image & Video Analysis</h2>
+      <p class="text-on-surface-variant mt-1">Upload images or videos for AI-powered marine plastic detection</p>
+    </div>
+
+    <div class="grid grid-cols-12 gap-6">
+      <!-- Upload & Detection Area -->
+      <div class="col-span-12 lg:col-span-8 space-y-6">
+
+        <!-- Preview Area -->
+        <div id="previewArea" class="relative aspect-[16/10] bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 shadow-2xl flex items-center justify-center">
+          <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, #41475b 1px, transparent 0); background-size: 24px 24px;"></div>
+          <div id="previewPlaceholder" class="flex flex-col items-center gap-3 z-10 text-on-surface-variant">
+            <span class="material-symbols-outlined text-6xl opacity-30">image_search</span>
+            <p class="text-sm">Upload a file to begin analysis</p>
+          </div>
+          <img id="previewImg" class="absolute inset-0 w-full h-full object-contain hidden z-10" alt="Analysed result"/>
+          <!-- Annotated result overlay -->
+          <canvas id="annotationCanvas" class="absolute inset-0 w-full h-full hidden z-20"></canvas>
+          <!-- Loading overlay -->
+          <div id="loadingOverlay" class="absolute inset-0 bg-surface/80 backdrop-blur flex flex-col items-center justify-center hidden z-30">
+            <svg class="spinner w-10 h-10 text-primary mb-3" viewBox="0 0 24 24" fill="none">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+            </svg>
+            <p class="text-primary text-sm font-bold" id="loadingText">Analysing...</p>
+          </div>
+        </div>
+
+        <!-- Upload Zone -->
+        <div id="dropZone" class="bg-surface-container-low p-8 rounded-xl border-2 border-dashed border-outline-variant/20 flex flex-col items-center justify-center group hover:border-primary/40 transition-all duration-300 cursor-pointer">
+          <div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+          </div>
+          <h4 class="text-lg font-headline font-medium text-on-surface">Upload image or video</h4>
+          <p class="text-on-surface-variant text-sm mt-1">Drag & drop or <button id="browseBtn" class="text-primary hover:underline">browse files</button></p>
+          <p class="text-[10px] text-on-surface-variant/50 uppercase tracking-widest mt-4">JPG · PNG · WEBP · BMP · MP4 · AVI · MOV · MKV</p>
+          <input id="fileInput" type="file" class="hidden" accept=".jpg,.jpeg,.png,.webp,.bmp,.mp4,.avi,.mov,.mkv,.webm"/>
+        </div>
+
+        <!-- Video results table (shown for video uploads) -->
+        <div id="videoResults" class="hidden bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden">
+          <div class="p-4 border-b border-outline-variant/10">
+            <h3 class="font-headline font-bold text-on-surface">Video Frame Detections</h3>
+          </div>
+          <div id="videoResultsBody" class="divide-y divide-outline-variant/10 max-h-64 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <!-- Results Sidebar -->
+      <div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+        <!-- Detection Summary -->
+        <div class="bg-surface-container p-6 rounded-xl border border-outline-variant/5 shadow-xl">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3 class="font-headline font-bold text-lg text-on-surface">Detection Summary</h3>
+              <p class="text-xs text-on-surface-variant" id="detectionId">No analysis yet</p>
+            </div>
+            <span id="statusBadge" class="bg-surface-container-highest text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">Idle</span>
+          </div>
+
+          <div id="detectionList" class="space-y-4 min-h-[80px]">
+            <p class="text-xs text-on-surface-variant text-center py-4">Upload a file to see detections</p>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <div class="p-3 bg-surface-container-highest rounded-lg text-center">
+              <p class="text-[10px] text-on-surface-variant uppercase mb-1">Objects</p>
+              <p class="text-xl font-headline font-bold text-primary" id="objectCount">—</p>
+            </div>
+            <div class="p-3 bg-surface-container-highest rounded-lg text-center">
+              <p class="text-[10px] text-on-surface-variant uppercase mb-1">Time (ms)</p>
+              <p class="text-xl font-headline font-bold text-tertiary" id="processingTime">—</p>
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-3">
+            <button id="analyzeBtn" class="w-full flex items-center justify-center gap-3 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-surface-container-lowest font-bold text-sm shadow-[0_0_20px_rgba(153,247,255,0.3)] hover:brightness-110 transition-all disabled:opacity-40" disabled>
+              <span class="material-symbols-outlined">play_arrow</span> Run Detection
+            </button>
+            <button id="clearBtn" class="w-full flex items-center justify-center gap-3 py-3 rounded-full bg-transparent text-primary border border-primary/40 font-bold text-sm hover:bg-primary/5 transition-all">
+              <span class="material-symbols-outlined">clear</span> Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Ecological Assessment -->
+        <div id="ecoCard" class="bg-gradient-to-br from-[#11192e] to-[#0c1326] p-6 rounded-xl border border-[#41475b]/15 relative overflow-hidden hidden">
+          <div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-symbols-outlined text-6xl text-primary">eco</span></div>
+          <h4 class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2">Dominant Type</h4>
+          <p class="text-on-surface font-headline font-medium leading-relaxed text-lg" id="dominantType">—</p>
+          <div class="mt-4 flex gap-4">
+            <div>
+              <p class="text-[10px] text-on-surface-variant uppercase">Objects Found</p>
+              <p class="text-lg font-mono text-on-surface" id="ecoCount">—</p>
+            </div>
+            <div>
+              <p class="text-[10px] text-on-surface-variant uppercase">Source</p>
+              <p class="text-lg font-mono text-on-surface" id="ecoSource">—</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Export -->
+        <div class="space-y-3">
+          <a id="downloadReportBtn" href="/generate-report?fmt=csv" target="_blank"
+             class="w-full flex items-center justify-center gap-3 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-surface-container-lowest font-bold text-sm shadow-[0_0_20px_rgba(153,247,255,0.3)] hover:brightness-110 transition-all">
+            <span class="material-symbols-outlined">download</span> Export CSV Report
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
-<footer class="ml-64 w-[calc(100%-16rem)] py-8 border-t border-[#41475b]/15 bg-[#070d1f] font-['Inter'] text-xs text-[#a5aac2]">
-<div class="flex flex-col md:flex-row justify-between items-center px-12 space-y-4 md:space-y-0">
-<div class="flex items-center gap-4"><span class="text-sm font-bold text-[#99f7ff]">Abyssal Lens</span><span>© 2024 Abyssal Lens Intelligence.</span></div>
-<div class="flex gap-8"><a class="hover:text-[#dfe4fe]" href="#">Privacy Policy</a><a class="hover:text-[#dfe4fe]" href="#">Terms of Service</a><a class="hover:text-[#dfe4fe]" href="#">Support</a></div>
-</div>
+
+<footer class="ml-64 py-6 border-t border-[#41475b]/15 bg-[#070d1f] font-['Inter'] text-xs text-[#a5aac2]">
+  <div class="flex justify-between items-center px-12">
+    <span class="text-sm font-bold text-[#99f7ff]">Abyssal Lens</span>
+    <span>© 2024 Abyssal Lens Intelligence.</span>
+  </div>
 </footer>
+
+<script>
+const API = 'http://localhost:5000';
+let selectedFile = null;
+
+const fileInput   = document.getElementById('fileInput');
+const dropZone    = document.getElementById('dropZone');
+const browseBtn   = document.getElementById('browseBtn');
+const analyzeBtn  = document.getElementById('analyzeBtn');
+const clearBtn    = document.getElementById('clearBtn');
+const previewImg  = document.getElementById('previewImg');
+const previewPlaceholder = document.getElementById('previewPlaceholder');
+const loadingOverlay = document.getElementById('loadingOverlay');
+const loadingText = document.getElementById('loadingText');
+const detectionList = document.getElementById('detectionList');
+const statusBadge = document.getElementById('statusBadge');
+const detectionId = document.getElementById('detectionId');
+const objectCount = document.getElementById('objectCount');
+const processingTime = document.getElementById('processingTime');
+const ecoCard     = document.getElementById('ecoCard');
+const dominantType = document.getElementById('dominantType');
+const ecoCount    = document.getElementById('ecoCount');
+const ecoSource   = document.getElementById('ecoSource');
+const videoResults = document.getElementById('videoResults');
+const videoResultsBody = document.getElementById('videoResultsBody');
+
+browseBtn.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('click', (e) => { if (e.target !== browseBtn) fileInput.click(); });
+
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length > 0) handleFile(fileInput.files[0]);
+});
+
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drop-zone-active'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drop-zone-active'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('drop-zone-active');
+  if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+});
+
+function handleFile(file) {
+  selectedFile = file;
+  analyzeBtn.disabled = false;
+
+  const isVideo = /\.(mp4|avi|mov|mkv|webm)$/i.test(file.name);
+  if (isVideo) {
+    previewPlaceholder.innerHTML = `<span class="material-symbols-outlined text-5xl text-primary">videocam</span><p class="text-sm mt-2">${file.name}</p>`;
+    previewPlaceholder.classList.remove('hidden');
+    previewImg.classList.add('hidden');
+  } else {
+    const url = URL.createObjectURL(file);
+    previewImg.src = url;
+    previewImg.classList.remove('hidden');
+    previewPlaceholder.classList.add('hidden');
+  }
+}
+
+analyzeBtn.addEventListener('click', async () => {
+  if (!selectedFile) return;
+  const isVideo = /\.(mp4|avi|mov|mkv|webm)$/i.test(selectedFile.name);
+
+  loadingOverlay.classList.remove('hidden');
+  loadingText.textContent = isVideo ? 'Processing video frames...' : 'Running detection...';
+  analyzeBtn.disabled = true;
+  statusBadge.textContent = 'Processing';
+  statusBadge.className = 'bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter';
+
+  const fd = new FormData();
+  fd.append('file', selectedFile);
+
+  try {
+    const res = await fetch(`${API}/analyze`, { method: 'POST', body: fd });
+    const json = await res.json();
+
+    if (!res.ok || json.status !== 'success') {
+      throw new Error(json.message || 'Analysis failed');
+    }
+
+    const data = json.data;
+
+    if (data.type === 'video') {
+      renderVideoResults(data);
+    } else {
+      renderImageResults(data);
+    }
+
+    statusBadge.textContent = 'Complete';
+    statusBadge.className = 'bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter';
+
+  } catch (err) {
+    showError(err.message);
+    statusBadge.textContent = 'Error';
+    statusBadge.className = 'bg-error/10 text-error text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter';
+  } finally {
+    loadingOverlay.classList.add('hidden');
+    analyzeBtn.disabled = false;
+  }
+});
+
+function renderImageResults(data) {
+  detectionId.textContent = `ID: #${data.detection_id || 'N/A'}`;
+  objectCount.textContent = data.object_count ?? 0;
+  processingTime.textContent = data.processing_time_ms ?? '—';
+  videoResults.classList.add('hidden');
+
+  // Show annotated image
+  if (data.annotated_path) {
+    previewImg.src = `${API}/${data.annotated_path}`;
+    previewImg.classList.remove('hidden');
+    previewPlaceholder.classList.add('hidden');
+  }
+
+  // Detection list
+  const labels   = data.labels || [];
+  const confs    = data.confidences || [];
+  const pTypes   = data.plastic_types || [];
+
+  if (labels.length === 0) {
+    detectionList.innerHTML = '<p class="text-xs text-on-surface-variant text-center py-4">No plastic detected</p>';
+  } else {
+    detectionList.innerHTML = labels.map((lbl, i) => {
+      const pct = ((confs[i] || 0) * 100).toFixed(1);
+      const pt  = pTypes[i] || lbl;
+      return `
+        <div class="p-4 bg-surface-container-highest rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all">
+          <div class="flex justify-between items-center mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-primary"></div>
+              <span class="text-sm font-medium">${pt}</span>
+            </div>
+            <span class="text-xs font-mono text-primary">${pct}%</span>
+          </div>
+          <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+            <div class="bar h-full bg-primary rounded-full" style="width:${pct}%"></div>
+          </div>
+          <p class="text-[10px] text-on-surface-variant mt-1 capitalize">${lbl.replace(/_/g,' ')}</p>
+        </div>`;
+    }).join('');
+  }
+
+  // Eco card
+  ecoCard.classList.remove('hidden');
+  dominantType.textContent = data.dominant_type || '—';
+  ecoCount.textContent     = data.object_count || 0;
+  ecoSource.textContent    = data.source || 'upload';
+}
+
+function renderVideoResults(data) {
+  const frames = data.detections || [];
+  videoResults.classList.remove('hidden');
+  objectCount.textContent = frames.reduce((s, f) => s + (f.object_count || 0), 0);
+  processingTime.textContent = '—';
+  detectionId.textContent = `${frames.length} frames processed`;
+  ecoCard.classList.add('hidden');
+
+  if (frames.length === 0) {
+    videoResultsBody.innerHTML = '<p class="p-4 text-xs text-on-surface-variant">No frames processed</p>';
+    return;
+  }
+
+  detectionList.innerHTML = `<p class="text-sm text-on-surface font-medium">${data.frames_processed} frames analysed with ${objectCount.textContent} total detections</p>`;
+
+  videoResultsBody.innerHTML = frames.map((f, i) => {
+    const labels = (f.labels || []).join(', ') || 'No detection';
+    return `<div class="flex items-center justify-between px-4 py-3 hover:bg-surface-container-high transition-colors">
+      <div>
+        <p class="text-xs font-medium text-on-surface">Frame ${i + 1}</p>
+        <p class="text-[10px] text-on-surface-variant">${labels}</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs font-mono text-primary">${f.object_count || 0} obj</span>
+        ${f.annotated_path ? `<a href="${API}/${f.annotated_path}" target="_blank" class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary">open_in_new</a>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showError(msg) {
+  detectionList.innerHTML = `<div class="p-4 bg-error/10 rounded-lg border border-error/20 text-error text-sm">${msg}</div>`;
+}
+
+clearBtn.addEventListener('click', () => {
+  selectedFile = null;
+  fileInput.value = '';
+  previewImg.src = '';
+  previewImg.classList.add('hidden');
+  previewPlaceholder.classList.remove('hidden');
+  previewPlaceholder.innerHTML = `<span class="material-symbols-outlined text-6xl opacity-30">image_search</span><p class="text-sm">Upload a file to begin analysis</p>`;
+  analyzeBtn.disabled = true;
+  detectionList.innerHTML = '<p class="text-xs text-on-surface-variant text-center py-4">Upload a file to see detections</p>';
+  statusBadge.textContent = 'Idle';
+  statusBadge.className = 'bg-surface-container-highest text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter';
+  objectCount.textContent = '—';
+  processingTime.textContent = '—';
+  detectionId.textContent = 'No analysis yet';
+  ecoCard.classList.add('hidden');
+  videoResults.classList.add('hidden');
+});
+</script>
 </body></html>

@@ -220,4 +220,42 @@
 <span>INTEL-STREAM 8.4.1</span>
 </div>
 </footer>
+
+<script>
+const API = 'http://localhost:5000';
+
+async function loadGeoData() {
+  try {
+    const res  = await fetch(`${API}/geo-data?live=true`);
+    const json = await res.json();
+    if (json.status !== 'success') return;
+    const { hotspots, summary, count } = json.data;
+
+    // Update Metrics Card
+    const concEl = document.querySelector('.p-3.bg-surface-container-low\\/50 .text-xl.font-headline');
+    if (concEl && summary?.average !== undefined) concEl.textContent = summary.average.toFixed(1);
+
+    const trendEl = document.querySelector('.p-3.bg-surface-container-low\\/50:last-of-type .text-xl');
+    if (trendEl) trendEl.textContent = count > 5 ? 'CRITICAL' : count > 2 ? 'HIGH' : 'MODERATE';
+
+    // Update footer status
+    const status = document.querySelector('footer .text-primary');
+    if (status) status.textContent = `ONLINE (${count} hotspots)`;
+
+    // Update AI alert with real data
+    const alertEl = document.querySelector('.border-tertiary\\/20 p.text-\\[11px\\]');
+    if (alertEl && hotspots.length > 0) {
+      const top = hotspots[0];
+      alertEl.textContent = `AI Detection: ${top.type || 'Plastic Plume'} at (${top.lat?.toFixed(2)||'?'}° N)`;
+    }
+
+    console.log('[Geo] Loaded', count, 'hotspots. Avg density:', summary?.average);
+  } catch (e) {
+    console.warn('[Geo] API error:', e);
+  }
+}
+
+loadGeoData();
+setInterval(loadGeoData, 60000);
+</script>
 </body></html>
